@@ -1,8 +1,0 @@
-Physionet 2012 - preprocessing
-  Data root : /home/ikioura/ml4h_data/p1
-  Output dir: /home/ikioura/project1ml4h/data/processed
-  Static vars  (4): ['Age', 'Gender', 'Height', 'Weight_static']
-  Dynamic vars (37): ['ALP', 'ALT', 'AST', 'Albumin', 'BUN', 'Bilirubin', 'Cholesterol', 'Creatinine', 'DiasABP', 'FiO2', 'GCS', 'Glucose', 'HCO3', 'HCT', 'HR', 'K', 'Lactate', 'MAP', 'MechVent', 'Mg', 'NIDiasABP', 'NIMAP', 'NISysABP', 'Na', 'PaCO2', 'PaO2', 'Platelets', 'RespRate', 'SaO2', 'SysABP', 'Temp', 'TroponinI', 'TroponinT', 'Urine', 'WBC', 'Weight', 'pH']
-  Total feature columns: 41
-
-[a] Processing 4000 patients ...
