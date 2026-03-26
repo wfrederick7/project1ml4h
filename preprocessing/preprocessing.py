@@ -140,6 +140,9 @@ def parse_patient(filepath: Path) -> pd.DataFrame:
         except (ValueError, TypeError):
             continue
 
+        if val == -1.0:
+            continue # sentinel for missing/unknown data
+
         # Last measurement in the hour bin wins
         grid[param][hour] = val
 
