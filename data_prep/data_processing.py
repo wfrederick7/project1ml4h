@@ -151,27 +151,46 @@ def apply_log1p_transforms(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
 
     return df
 
-def robust_scale(df: pd.DataFrame, cols: list[str]) -> tuple[pd.DataFrame, dict]:
+def fit_robust_scaler(df: pd.DataFrame, cols: list[str]) -> dict:
     """
-    Robust scaling: (x - median) / IQR
+    Fit robust scaling parameters on training data only.
+    Returns per-column median and IQR.
     """
-    df = df.copy()
     params = {}
 
     for col in cols:
-        s = df[col]
-        med = s.median()
-        q1 = s.quantile(0.25)
-        q3 = s.quantile(0.75)
-        iqr = q3 - q1
+        if col in df.columns:
+            s = df[col]
+            med = s.median()
+            q1 = s.quantile(0.25)
+            q3 = s.quantile(0.75)
+            iqr = q3 - q1
 
-        if pd.isna(iqr) or iqr == 0:
-            iqr = 1.0
+            if pd.isna(iqr) or iqr == 0:
+                iqr = 1.0
 
-        df[col] = (s - med) / iqr
-        params[col] = {"median": float(med), "iqr": float(iqr)}
+            params[col] = {"median": float(med), "iqr": float(iqr)}
 
-    return df, params
+    return params
+
+
+def apply_robust_scaler(
+    df: pd.DataFrame,
+    cols: list[str],
+    params: dict
+) -> pd.DataFrame:
+    """
+    Apply robust scaling using parameters learned from training data.
+    """
+    df = df.copy()
+
+    for col in cols:
+        if col in df.columns and col in params:
+            med = params[col]["median"]
+            iqr = params[col]["iqr"]
+            df[col] = (df[col] - med) / iqr
+
+    return df
 
 def make_linear_ready(df_ffill: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     """
@@ -189,10 +208,32 @@ def make_linear_ready(df_ffill: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     # Log-transform only selected skewed columns
     df = apply_log1p_transforms(df, LOG_COLS)
 
-    # Robust scale non-binary feature columns
-    df_scaled, scaler_params = robust_scale(df, SCALE_COLS)
+        # Fit scaler on train only
+    scaler_params = fit_robust_scaler(df, SCALE_COLS)
 
-    return df_scaled, scaler_params
+    # Apply scaler to train
+    df = apply_robust_scaler(df, SCALE_COLS, scaler_params)
+
+    return df, scaler_params
+
+def make_linear_ready_test(df_ffill: pd.DataFrame, scaler_params: dict) -> pd.DataFrame:
+    """
+    Apply training-fitted preprocessing to test data.
+    """
+    df = df_ffill.copy()
+
+    # Keep binary columns as 0/1
+    for col in BINARY_COLS:
+        if col in df.columns:
+            df[col] = df[col].astype(float).round().clip(lower=0, upper=1)
+
+    # Apply same log transform
+    df = apply_log1p_transforms(df, LOG_COLS)
+
+    # Apply scaler using TRAIN params
+    df = apply_robust_scaler(df, SCALE_COLS, scaler_params)
+
+    return df
 
 def save_parquet(df: pd.DataFrame, filename: str) -> None:
     out_path = OUTPUT_DIR / filename
@@ -211,7 +252,7 @@ def save_scaler_params(params: dict, filename: str) -> None:
 # Main processing per set
 # =========================================================
 
-def process_one_set(set_name: str) -> None:
+def process_training_set(set_name: str) -> tuple[dict, dict]:
     print(f"\n=== Processing set {set_name} ===")
 
     # Load
@@ -235,9 +276,34 @@ def process_one_set(set_name: str) -> None:
 
     print(f"Done with set {set_name}")
 
+    return (fill_defaults, scaler_params)
+
+def process_non_training_set(set_name: str, fill_defaults: dict, scaler_params: dict) -> None:
+    print(f"\n=== Processing set {set_name} ===")
+
+    # Load
+    df = load_set(set_name)
+    df = sort_patient_time(df)
+
+    # 1) Clean obvious implausible values to NaN
+    df_cleaned = clean_targeted_outliers(df)
+
+    # 2) Forward-imputed version
+    df_ffill = forward_impute_per_patient(df_cleaned, fill_defaults)
+    save_parquet(df_ffill, f"set_{set_name}_ffill.parquet")
+
+    # 3) Linear-model-ready version
+    
+    df_linear= make_linear_ready_test(df_ffill, scaler_params)
+    save_parquet(df_linear, f"set_{set_name}_linear.parquet")
+    save_scaler_params(scaler_params, f"set_{set_name}_linear_scaler_params.csv")
+
+    print(f"Done with set {set_name}")
+
 def process_all_sets():
-    for set_name in ["a", "b", "c"]:
-        process_one_set(set_name)
+    fill_defaults, scaler_params = process_training_set("a")
+    process_non_training_set("b", fill_defaults, scaler_params)
+    process_non_training_set("c", fill_defaults, scaler_params)
 
 # =========================================================
 # Run
