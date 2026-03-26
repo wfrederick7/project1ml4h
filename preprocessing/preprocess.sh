@@ -3,10 +3,11 @@
 #SBATCH --account=ml4h
 #SBATCH --time=00:30:00
 #SBATCH --mem=16G
-#SBATCH --exclude=studgpu-node*
 #SBATCH --output=preprocess.out
 #SBATCH --error=preprocess.err
 
-source /cluster/courses/ml4h/project1env/bin/activate
+cd /home/$USER/project1ml4h/preprocessing
 
-python data/preprocessing.py
+source /cluster/courses/ml4h/jupyter/bin/activate
+
+python preprocessing.py
