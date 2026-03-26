@@ -1,0 +1,13 @@
+{
+  "base_url": "/user/wfrederick/",
+  "hostname": "0.0.0.0",
+  "password": false,
+  "pid": 2794826,
+  "port": 33293,
+  "root_dir": "/home/wfrederick",
+  "secure": false,
+  "sock": "",
+  "token": "eeb763da90704642bd805fbbbe721ee0",
+  "url": "http://studgpu-node01.inf.ethz.ch:33293/user/wfrederick/",
+  "version": "2.17.0"
+}

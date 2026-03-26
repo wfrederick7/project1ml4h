@@ -1,0 +1,642 @@
+[I 2026-03-26 10:32:41.307 ServerApp] jupyter_lsp | extension was successfully linked.
+[I 2026-03-26 10:32:41.312 ServerApp] jupyter_server_terminals | extension was successfully linked.
+[I 2026-03-26 10:32:41.313 JupyterHubSingleUser] Starting jupyterhub single-user server extension version 5.4.3
+[I 2026-03-26 10:32:41.313 JupyterHubSingleUser] Using default url from server extension lab: /lab
+[I 2026-03-26 10:32:41.316 ServerApp] jupyterhub | extension was successfully linked.
+[W 2026-03-26 10:32:41.318 LabApp] 'extra_template_paths' was found in both NotebookApp and ServerApp. This is likely a recent change. This config will only be set in NotebookApp. Please check if you should also config these traits in ServerApp for your purpose.
+[I 2026-03-26 10:32:41.322 ServerApp] jupyterlab | extension was successfully linked.
+[I 2026-03-26 10:32:41.322 ServerApp] jupyterlab_server_timer | extension was successfully linked.
+[W 2026-03-26 10:32:41.324 JupyterNotebookApp] 'extra_template_paths' was found in both NotebookApp and ServerApp. This is likely a recent change. This config will only be set in NotebookApp. Please check if you should also config these traits in ServerApp for your purpose.
+[I 2026-03-26 10:32:41.326 ServerApp] notebook | extension was successfully linked.
+[I 2026-03-26 10:32:41.333 ServerApp] Writing Jupyter server cookie secret to /home/wfrederick/.local/share/jupyter/runtime/jupyter_cookie_secret
+[I 2026-03-26 10:32:41.542 ServerApp] notebook_shim | extension was successfully linked.
+[I 2026-03-26 10:32:41.558 ServerApp] notebook_shim | extension was successfully loaded.
+[I 2026-03-26 10:32:41.561 ServerApp] jupyter_lsp | extension was successfully loaded.
+[I 2026-03-26 10:32:41.562 ServerApp] jupyter_server_terminals | extension was successfully loaded.
+[I 2026-03-26 10:32:41.569 JupyterHubSingleUser] Updating Hub with activity every 300 seconds
+[I 2026-03-26 10:32:41.569 ServerApp] jupyterhub | extension was successfully loaded.
+[I 2026-03-26 10:32:41.577 LabApp] JupyterLab extension loaded from /cluster/courses/ml4h/jupyter/lib/python3.12/site-packages/jupyterlab
+[I 2026-03-26 10:32:41.577 LabApp] JupyterLab application directory is /cluster/courses/ml4h/jupyter/share/jupyter/lab
+[I 2026-03-26 10:32:41.578 LabApp] Extension Manager is 'pypi'.
+[I 2026-03-26 10:32:41.623 ServerApp] Skipped non-installed server(s): basedpyright, bash-language-server, dockerfile-language-server-nodejs, javascript-typescript-langserver, jedi-language-server, julia-language-server, pyrefly, pyright, python-language-server, python-lsp-server, r-languageserver, sql-language-server, texlab, typescript-language-server, unified-language-server, vscode-css-languageserver-bin, vscode-html-languageserver-bin, vscode-json-languageserver-bin, yaml-language-server
+[I 2026-03-26 10:32:41.686 ServerApp] jupyterlab | extension was successfully loaded.
+[I 2026-03-26 10:32:41.686 ServerApp] Registered jupyterlab_server_timer server extension
+[I 2026-03-26 10:32:41.686 ServerApp] jupyterlab_server_timer | extension was successfully loaded.
+[I 2026-03-26 10:32:41.695 ServerApp] notebook | extension was successfully loaded.
+[I 2026-03-26 10:32:41.697 ServerApp] Serving notebooks from local directory: /home/wfrederick
+[I 2026-03-26 10:32:41.697 ServerApp] Jupyter Server 2.17.0 is running at:
+[I 2026-03-26 10:32:41.697 ServerApp] http://studgpu-node01.inf.ethz.ch:33293/user/wfrederick/lab?token=...
+[I 2026-03-26 10:32:41.698 ServerApp]     http://127.0.0.1:33293/user/wfrederick/lab?token=...
+[I 2026-03-26 10:32:41.698 ServerApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+[I 2026-03-26 10:32:43.639 ServerApp] 200 GET /user/wfrederick/api (@129.132.161.147) 1.14ms
+[I 2026-03-26 10:32:43.741 ServerApp] 302 GET /user/wfrederick/ -> /user/wfrederick/lab? (@::ffff:127.0.0.1) 0.73ms
+[I 2026-03-26 10:32:43.752 ServerApp] 302 GET /user/wfrederick/lab -> /hub/api/oauth2/authorize?client_id=jupyterhub-user-wfrederick&redirect_uri=%2Fuser%2Fwfrederick%2Foauth_callback&response_type=code&state=[secret] (@::ffff:127.0.0.1) 1.97ms
+[I 2026-03-26 10:32:43.818 ServerApp] Logged-in user wfrederick
+[I 2026-03-26 10:32:43.819 ServerApp] Setting new xsrf cookie for b'c267568dde7c4bb2984421e95589c83d:48b5908b2750bd1e5c348f21a7d050e2eb4d0140dd8340a775b93375514ecbe1' {'path': '/user/wfrederick/'}
+[I 2026-03-26 10:32:43.821 ServerApp] 302 GET /user/wfrederick/oauth_callback?code=[secret]&state=[secret] -> /user/wfrederick/lab (wfrederick@::ffff:127.0.0.1) 32.36ms
+[I 2026-03-26 10:32:43.842 ServerApp] 200 GET /user/wfrederick/lab (wfrederick@::ffff:127.0.0.1) 10.70ms
+[I 2026-03-26 10:32:44.439 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774517564271 (wfrederick@::ffff:127.0.0.1) 145.87ms
+[I 2026-03-26 10:32:44.442 ServerApp] 200 GET /user/wfrederick/api/me?1774517564272 (wfrederick@::ffff:127.0.0.1) 1.32ms
+[W 2026-03-26 10:32:44.445 ServerApp] Skipping XSRF check for insecure request GET /user/wfrederick/api/events/subscribe
+[I 2026-03-26 10:32:44.446 ServerApp] 101 GET /user/wfrederick/api/events/subscribe (wfrederick@::ffff:127.0.0.1) 4.67ms
+[I 2026-03-26 10:32:44.537 ServerApp] 200 GET /user/wfrederick/lab/api/settings?1774517564277 (wfrederick@::ffff:127.0.0.1) 94.70ms
+[I 2026-03-26 10:32:44.539 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517564279 (wfrederick@::ffff:127.0.0.1) 95.09ms
+[I 2026-03-26 10:32:44.540 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517564279 (wfrederick@::ffff:127.0.0.1) 95.64ms
+[I 2026-03-26 10:32:44.542 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517564280 (wfrederick@::ffff:127.0.0.1) 1.45ms
+[I 2026-03-26 10:32:44.544 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517564280 (wfrederick@::ffff:127.0.0.1) 1.14ms
+[I 2026-03-26 10:32:44.552 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774517564425 (wfrederick@::ffff:127.0.0.1) 1.35ms
+[I 2026-03-26 10:32:44.553 ServerApp] 200 GET /user/wfrederick/api/me?1774517564427 (wfrederick@::ffff:127.0.0.1) 0.74ms
+[I 2026-03-26 10:32:44.658 ServerApp] 200 GET /user/wfrederick/lab/api/translations/default?1774517564595 (wfrederick@::ffff:127.0.0.1) 38.49ms
+[I 2026-03-26 10:32:44.671 ServerApp] 200 GET /user/wfrederick/api/config/jupyterlabapputilsextensionannouncements?1774517564647 (wfrederick@::ffff:127.0.0.1) 2.32ms
+[W 2026-03-26 10:32:44.691 LabApp] Could not determine jupyterlab build status without nodejs
+[I 2026-03-26 10:32:44.692 ServerApp] 200 GET /user/wfrederick/lab/api/build?1774517564667 (wfrederick@::ffff:127.0.0.1) 2.05ms
+[I 2026-03-26 10:32:44.696 ServerApp] 200 GET /user/wfrederick/lsp/status?1774517564669 (wfrederick@::ffff:127.0.0.1) 3.90ms
+[I 2026-03-26 10:32:44.702 ServerApp] 200 GET /user/wfrederick/jupyterlab-server-timer/get-life-span?1774517564680 (wfrederick@::ffff:127.0.0.1) 0.72ms
+[I 2026-03-26 10:32:44.772 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774517564717 (wfrederick@::ffff:127.0.0.1) 31.31ms
+[I 2026-03-26 10:32:44.778 ServerApp] 200 GET /user/wfrederick/lab/api/settings/@jupyterlab/codemirror-extension:plugin?1774517564750 (wfrederick@::ffff:127.0.0.1) 4.73ms
+[I 2026-03-26 10:32:44.786 ServerApp] 200 GET /user/wfrederick/lab/api/settings/@jupyterlab/docmanager-extension:plugin?1774517564750 (wfrederick@::ffff:127.0.0.1) 7.10ms
+[I 2026-03-26 10:32:44.790 ServerApp] 200 GET /user/wfrederick/lab/api/settings/@jupyterlab/notebook-extension:panel?1774517564754 (wfrederick@::ffff:127.0.0.1) 9.27ms
+[I 2026-03-26 10:32:44.809 ServerApp] 200 GET /user/wfrederick/lab/api/translations?1774517564697 (wfrederick@::ffff:127.0.0.1) 90.91ms
+[I 2026-03-26 10:32:44.817 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces/default?1774517564795 (wfrederick@::ffff:127.0.0.1) 0.84ms
+[I 2026-03-26 10:32:44.898 ServerApp] 200 GET /user/wfrederick/lab/api/settings?ids_only=true&1774517564869 (wfrederick@::ffff:127.0.0.1) 7.01ms
+[I 2026-03-26 10:32:45.888 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517565857 (wfrederick@::ffff:127.0.0.1) 3.85ms
+[I 2026-03-26 10:32:45.911 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774517565877 (wfrederick@::ffff:127.0.0.1) 11.85ms
+[I 2026-03-26 10:32:46.473 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517566442 (wfrederick@::ffff:127.0.0.1) 7.91ms
+[I 2026-03-26 10:32:51.877 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517571835 (wfrederick@::ffff:127.0.0.1) 4.66ms
+[I 2026-03-26 10:32:52.418 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517572374 (wfrederick@::ffff:127.0.0.1) 8.79ms
+[I 2026-03-26 10:32:53.679 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517573620 (wfrederick@::ffff:127.0.0.1) 31.81ms
+[I 2026-03-26 10:32:54.229 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517574194 (wfrederick@::ffff:127.0.0.1) 7.90ms
+[I 2026-03-26 10:32:54.563 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517574532 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:32:54.572 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517574533 (wfrederick@::ffff:127.0.0.1) 1.42ms
+[I 2026-03-26 10:32:54.575 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517574533 (wfrederick@::ffff:127.0.0.1) 1.79ms
+[I 2026-03-26 10:32:54.579 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517574533 (wfrederick@::ffff:127.0.0.1) 2.94ms
+[I 2026-03-26 10:32:55.959 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517575904 (wfrederick@::ffff:127.0.0.1) 30.11ms
+[I 2026-03-26 10:32:56.319 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774517576286 (wfrederick@::ffff:127.0.0.1) 6.14ms
+[I 2026-03-26 10:32:56.853 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517576820 (wfrederick@::ffff:127.0.0.1) 8.31ms
+[I 2026-03-26 10:32:59.281 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42160.out?type=file&content=1&hash=1&format=text&contentProviderId=undefined&1774517579236 (wfrederick@::ffff:127.0.0.1) 5.00ms
+[I 2026-03-26 10:32:59.283 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517579259 (wfrederick@::ffff:127.0.0.1) 0.89ms
+[I 2026-03-26 10:32:59.296 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42160.out/checkpoints?1774517579271 (wfrederick@::ffff:127.0.0.1) 2.77ms
+[I 2026-03-26 10:32:59.302 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42160.out/checkpoints?1774517579271 (wfrederick@::ffff:127.0.0.1) 5.13ms
+[I 2026-03-26 10:32:59.303 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42160.out/checkpoints?1774517579273 (wfrederick@::ffff:127.0.0.1) 5.77ms
+[I 2026-03-26 10:32:59.314 ServerApp] 201 POST /user/wfrederick/api/contents/slurm-42160.out/checkpoints?1774517579287 (wfrederick@::ffff:127.0.0.1) 4.18ms
+[I 2026-03-26 10:32:59.319 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517579298 (wfrederick@::ffff:127.0.0.1) 0.76ms
+[I 2026-03-26 10:32:59.794 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517579763 (wfrederick@::ffff:127.0.0.1) 7.32ms
+[I 2026-03-26 10:33:00.312 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517580276 (wfrederick@::ffff:127.0.0.1) 7.95ms
+[I 2026-03-26 10:33:00.800 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out?type=file&content=1&hash=1&format=text&contentProviderId=undefined&1774517580760 (wfrederick@::ffff:127.0.0.1) 4.03ms
+[I 2026-03-26 10:33:00.803 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517580779 (wfrederick@::ffff:127.0.0.1) 1.00ms
+[I 2026-03-26 10:33:00.821 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out/checkpoints?1774517580798 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:33:00.824 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out/checkpoints?1774517580800 (wfrederick@::ffff:127.0.0.1) 2.25ms
+[I 2026-03-26 10:33:00.827 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out/checkpoints?1774517580798 (wfrederick@::ffff:127.0.0.1) 1.94ms
+[I 2026-03-26 10:33:00.837 ServerApp] 201 POST /user/wfrederick/api/contents/slurm-42165.out/checkpoints?1774517580811 (wfrederick@::ffff:127.0.0.1) 4.32ms
+[I 2026-03-26 10:33:00.843 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517580821 (wfrederick@::ffff:127.0.0.1) 0.87ms
+[I 2026-03-26 10:33:01.317 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517581282 (wfrederick@::ffff:127.0.0.1) 8.40ms
+[I 2026-03-26 10:33:01.843 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517581805 (wfrederick@::ffff:127.0.0.1) 7.97ms
+[I 2026-03-26 10:33:03.989 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517583953 (wfrederick@::ffff:127.0.0.1) 5.84ms
+[I 2026-03-26 10:33:04.523 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517584487 (wfrederick@::ffff:127.0.0.1) 8.35ms
+[I 2026-03-26 10:33:04.582 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517584552 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:33:04.587 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517584560 (wfrederick@::ffff:127.0.0.1) 1.38ms
+[I 2026-03-26 10:33:04.596 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517584567 (wfrederick@::ffff:127.0.0.1) 2.06ms
+[I 2026-03-26 10:33:05.900 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517585837 (wfrederick@::ffff:127.0.0.1) 31.60ms
+[I 2026-03-26 10:33:06.008 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517585956 (wfrederick@::ffff:127.0.0.1) 29.07ms
+[I 2026-03-26 10:33:06.443 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517586413 (wfrederick@::ffff:127.0.0.1) 6.56ms
+[I 2026-03-26 10:33:10.858 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517590828 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:33:14.599 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517594573 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:33:14.608 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517594579 (wfrederick@::ffff:127.0.0.1) 1.37ms
+[I 2026-03-26 10:33:14.617 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517594592 (wfrederick@::ffff:127.0.0.1) 2.04ms
+[I 2026-03-26 10:33:16.055 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517595998 (wfrederick@::ffff:127.0.0.1) 30.82ms
+[I 2026-03-26 10:33:20.877 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517600847 (wfrederick@::ffff:127.0.0.1) 1.49ms
+[I 2026-03-26 10:33:24.616 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517604588 (wfrederick@::ffff:127.0.0.1) 1.68ms
+[I 2026-03-26 10:33:24.622 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517604595 (wfrederick@::ffff:127.0.0.1) 1.38ms
+[I 2026-03-26 10:33:24.631 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517604606 (wfrederick@::ffff:127.0.0.1) 2.64ms
+[I 2026-03-26 10:33:26.105 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517606050 (wfrederick@::ffff:127.0.0.1) 30.75ms
+[I 2026-03-26 10:33:30.894 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517610866 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:33:34.632 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517614605 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:33:34.642 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517614609 (wfrederick@::ffff:127.0.0.1) 1.37ms
+[I 2026-03-26 10:33:34.646 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517614618 (wfrederick@::ffff:127.0.0.1) 2.04ms
+[I 2026-03-26 10:33:36.162 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517616099 (wfrederick@::ffff:127.0.0.1) 31.80ms
+[I 2026-03-26 10:33:40.914 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517620883 (wfrederick@::ffff:127.0.0.1) 1.52ms
+[I 2026-03-26 10:33:44.676 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517624629 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:33:44.679 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517624620 (wfrederick@::ffff:127.0.0.1) 1.78ms
+[I 2026-03-26 10:33:44.687 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517624637 (wfrederick@::ffff:127.0.0.1) 2.09ms
+[I 2026-03-26 10:33:45.636 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774517625598 (wfrederick@::ffff:127.0.0.1) 4.67ms
+[I 2026-03-26 10:33:45.639 ServerApp] 200 GET /user/wfrederick/api/me?1774517625599 (wfrederick@::ffff:127.0.0.1) 1.71ms
+[I 2026-03-26 10:33:46.218 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517626161 (wfrederick@::ffff:127.0.0.1) 30.09ms
+[I 2026-03-26 10:33:50.931 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517630902 (wfrederick@::ffff:127.0.0.1) 1.49ms
+[I 2026-03-26 10:33:54.696 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517634665 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:33:54.698 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517634666 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:33:54.704 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517634673 (wfrederick@::ffff:127.0.0.1) 2.07ms
+[I 2026-03-26 10:33:56.276 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517636218 (wfrederick@::ffff:127.0.0.1) 30.56ms
+[I 2026-03-26 10:34:00.952 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517640923 (wfrederick@::ffff:127.0.0.1) 1.49ms
+[I 2026-03-26 10:34:04.712 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517644684 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:34:04.715 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517644685 (wfrederick@::ffff:127.0.0.1) 1.84ms
+[I 2026-03-26 10:34:04.722 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517644696 (wfrederick@::ffff:127.0.0.1) 2.17ms
+[I 2026-03-26 10:34:06.329 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774517646271 (wfrederick@::ffff:127.0.0.1) 31.37ms
+[I 2026-03-26 10:34:09.857 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774517649820 (wfrederick@::ffff:127.0.0.1) 8.47ms
+[I 2026-03-26 10:34:10.389 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517650355 (wfrederick@::ffff:127.0.0.1) 9.48ms
+[I 2026-03-26 10:34:10.967 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517650940 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:34:14.729 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517654699 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:34:14.740 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517654701 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:34:14.744 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517654709 (wfrederick@::ffff:127.0.0.1) 2.06ms
+[I 2026-03-26 10:34:16.358 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774517656324 (wfrederick@::ffff:127.0.0.1) 8.10ms
+[I 2026-03-26 10:34:16.999 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517656965 (wfrederick@::ffff:127.0.0.1) 8.92ms
+[I 2026-03-26 10:34:18.349 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517658319 (wfrederick@::ffff:127.0.0.1) 8.10ms
+[I 2026-03-26 10:34:20.991 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517660962 (wfrederick@::ffff:127.0.0.1) 1.84ms
+[I 2026-03-26 10:34:24.750 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517664719 (wfrederick@::ffff:127.0.0.1) 3.19ms
+[I 2026-03-26 10:34:24.756 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517664730 (wfrederick@::ffff:127.0.0.1) 1.46ms
+[I 2026-03-26 10:34:24.759 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517664731 (wfrederick@::ffff:127.0.0.1) 2.16ms
+[I 2026-03-26 10:34:26.390 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774517666352 (wfrederick@::ffff:127.0.0.1) 8.37ms
+[I 2026-03-26 10:34:31.010 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517670980 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:34:34.768 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517674738 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:34:34.770 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517674742 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:34:34.778 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517674747 (wfrederick@::ffff:127.0.0.1) 2.06ms
+[I 2026-03-26 10:34:36.422 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774517676385 (wfrederick@::ffff:127.0.0.1) 8.32ms
+[I 2026-03-26 10:34:39.451 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517679420 (wfrederick@::ffff:127.0.0.1) 4.68ms
+[I 2026-03-26 10:34:39.984 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517679947 (wfrederick@::ffff:127.0.0.1) 9.62ms
+[I 2026-03-26 10:34:41.025 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517680997 (wfrederick@::ffff:127.0.0.1) 2.24ms
+[I 2026-03-26 10:34:44.782 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517684756 (wfrederick@::ffff:127.0.0.1) 1.59ms
+[I 2026-03-26 10:34:44.789 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517684762 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:34:44.792 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517684766 (wfrederick@::ffff:127.0.0.1) 2.02ms
+[I 2026-03-26 10:34:46.449 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517686416 (wfrederick@::ffff:127.0.0.1) 4.85ms
+[I 2026-03-26 10:34:46.655 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774517686628 (wfrederick@::ffff:127.0.0.1) 3.01ms
+[I 2026-03-26 10:34:46.658 ServerApp] 200 GET /user/wfrederick/api/me?1774517686632 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:34:51.045 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517691012 (wfrederick@::ffff:127.0.0.1) 1.88ms
+[I 2026-03-26 10:34:54.799 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517694769 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:34:54.809 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517694781 (wfrederick@::ffff:127.0.0.1) 1.48ms
+[I 2026-03-26 10:34:54.820 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517694782 (wfrederick@::ffff:127.0.0.1) 2.14ms
+[I 2026-03-26 10:34:56.470 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517696438 (wfrederick@::ffff:127.0.0.1) 5.36ms
+[I 2026-03-26 10:34:57.683 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517697648 (wfrederick@::ffff:127.0.0.1) 8.94ms
+[I 2026-03-26 10:35:01.060 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517701034 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:35:04.817 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517704789 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:35:04.824 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517704799 (wfrederick@::ffff:127.0.0.1) 1.42ms
+[I 2026-03-26 10:35:04.831 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517704806 (wfrederick@::ffff:127.0.0.1) 2.06ms
+[I 2026-03-26 10:35:06.491 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517706459 (wfrederick@::ffff:127.0.0.1) 4.23ms
+[I 2026-03-26 10:35:11.088 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517711048 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:35:12.259 ServerApp] New terminal with automatic name: 1
+[I 2026-03-26 10:35:12.264 ServerApp] 200 POST /user/wfrederick/api/terminals?1774517712220 (wfrederick@::ffff:127.0.0.1) 19.58ms
+[I 2026-03-26 10:35:12.278 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517712253 (wfrederick@::ffff:127.0.0.1) 1.20ms
+[W 2026-03-26 10:35:12.308 ServerApp] Skipping XSRF check for insecure request GET /user/wfrederick/terminals/websocket/1
+[I 2026-03-26 10:35:12.309 ServerApp] 101 GET /user/wfrederick/terminals/websocket/1 (wfrederick@::ffff:127.0.0.1) 1.48ms
+[I 2026-03-26 10:35:12.856 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774517712825 (wfrederick@::ffff:127.0.0.1) 7.76ms
+[I 2026-03-26 10:35:14.838 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517714810 (wfrederick@::ffff:127.0.0.1) 1.81ms
+[I 2026-03-26 10:35:14.848 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517714817 (wfrederick@::ffff:127.0.0.1) 2.13ms
+[I 2026-03-26 10:35:16.511 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517716479 (wfrederick@::ffff:127.0.0.1) 5.05ms
+[I 2026-03-26 10:35:21.110 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517721078 (wfrederick@::ffff:127.0.0.1) 1.82ms
+[I 2026-03-26 10:35:22.299 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517722270 (wfrederick@::ffff:127.0.0.1) 2.20ms
+[I 2026-03-26 10:35:24.856 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517724826 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:35:24.861 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517724835 (wfrederick@::ffff:127.0.0.1) 2.10ms
+[I 2026-03-26 10:35:26.534 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517726501 (wfrederick@::ffff:127.0.0.1) 4.82ms
+[I 2026-03-26 10:35:31.126 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517731098 (wfrederick@::ffff:127.0.0.1) 1.86ms
+[I 2026-03-26 10:35:32.315 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517732287 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:35:34.875 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517734844 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:35:34.886 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517734848 (wfrederick@::ffff:127.0.0.1) 2.85ms
+[I 2026-03-26 10:35:36.557 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517736524 (wfrederick@::ffff:127.0.0.1) 4.79ms
+[I 2026-03-26 10:35:41.141 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517741112 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:35:42.332 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517742303 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:35:45.458 ServerApp] 200 GET /user/wfrederick/api/kernels?1774517745430 (wfrederick@::ffff:127.0.0.1) 1.79ms
+[I 2026-03-26 10:35:45.462 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774517745430 (wfrederick@::ffff:127.0.0.1) 2.61ms
+[I 2026-03-26 10:35:46.579 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517746548 (wfrederick@::ffff:127.0.0.1) 4.09ms
+[I 2026-03-26 10:35:47.671 ServerApp] 200 GET /user/wfrederick/api/me?1774517747645 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:35:47.675 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774517747645 (wfrederick@::ffff:127.0.0.1) 3.30ms
+[I 2026-03-26 10:35:51.230 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517751129 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:35:52.349 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517752321 (wfrederick@::ffff:127.0.0.1) 1.67ms
+[I 2026-03-26 10:35:57.492 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774517757426 (wfrederick@::ffff:127.0.0.1) 4.34ms
+[I 2026-03-26 10:36:01.458 ServerApp] 200 GET /user/wfrederick/api/sessions?1774517761429 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:36:02.456 ServerApp] 200 GET /user/wfrederick/api/terminals?1774517762429 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:36:49.471 ServerApp] 200 GET /user/wfrederick/api/me?1774517809427 (wfrederick@::ffff:127.0.0.1) 3.71ms
+[I 2026-03-26 10:36:49.476 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774517809428 (wfrederick@::ffff:127.0.0.1) 4.04ms
+[W 2026-03-26 10:36:58.470 ServerApp] Skipping XSRF check for insecure request GET /user/wfrederick/api/events/subscribe
+[I 2026-03-26 10:36:58.472 ServerApp] 101 GET /user/wfrederick/api/events/subscribe (wfrederick@::ffff:127.0.0.1) 2.68ms
+[W 2026-03-26 10:42:18.098 ServerApp] Skipping XSRF check for insecure request GET /user/wfrederick/api/events/subscribe
+[I 2026-03-26 10:42:18.114 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518138032 (wfrederick@::ffff:127.0.0.1) 19.04ms
+[I 2026-03-26 10:42:18.120 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518138032 (wfrederick@::ffff:127.0.0.1) 20.62ms
+[I 2026-03-26 10:42:18.122 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518138032 (wfrederick@::ffff:127.0.0.1) 21.48ms
+[I 2026-03-26 10:42:18.125 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518138032 (wfrederick@::ffff:127.0.0.1) 20.25ms
+[I 2026-03-26 10:42:18.129 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518138032 (wfrederick@::ffff:127.0.0.1) 25.07ms
+[I 2026-03-26 10:42:18.130 ServerApp] 101 GET /user/wfrederick/api/events/subscribe (wfrederick@::ffff:127.0.0.1) 33.06ms
+[I 2026-03-26 10:42:28.141 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518148104 (wfrederick@::ffff:127.0.0.1) 2.13ms
+[I 2026-03-26 10:42:28.152 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518148110 (wfrederick@::ffff:127.0.0.1) 2.23ms
+[I 2026-03-26 10:42:28.167 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518148114 (wfrederick@::ffff:127.0.0.1) 1.13ms
+[I 2026-03-26 10:42:28.168 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518148111 (wfrederick@::ffff:127.0.0.1) 1.81ms
+[I 2026-03-26 10:42:28.170 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518148117 (wfrederick@::ffff:127.0.0.1) 6.89ms
+[I 2026-03-26 10:42:33.768 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518153645 (wfrederick@::ffff:127.0.0.1) 4.90ms
+[I 2026-03-26 10:42:34.475 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518154445 (wfrederick@::ffff:127.0.0.1) 7.73ms
+[I 2026-03-26 10:42:35.008 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518154977 (wfrederick@::ffff:127.0.0.1) 7.50ms
+[I 2026-03-26 10:42:38.173 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518158147 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:42:38.183 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518158148 (wfrederick@::ffff:127.0.0.1) 2.26ms
+[I 2026-03-26 10:42:38.186 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518158158 (wfrederick@::ffff:127.0.0.1) 2.00ms
+[I 2026-03-26 10:42:38.193 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518158158 (wfrederick@::ffff:127.0.0.1) 1.43ms
+[I 2026-03-26 10:42:38.199 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518158159 (wfrederick@::ffff:127.0.0.1) 8.81ms
+[I 2026-03-26 10:42:48.192 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518168165 (wfrederick@::ffff:127.0.0.1) 1.87ms
+[I 2026-03-26 10:42:48.196 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518168174 (wfrederick@::ffff:127.0.0.1) 2.17ms
+[I 2026-03-26 10:42:48.203 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518168181 (wfrederick@::ffff:127.0.0.1) 1.43ms
+[I 2026-03-26 10:42:48.205 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518168182 (wfrederick@::ffff:127.0.0.1) 1.71ms
+[I 2026-03-26 10:42:48.220 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518168193 (wfrederick@::ffff:127.0.0.1) 7.62ms
+[I 2026-03-26 10:42:56.545 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518176512 (wfrederick@::ffff:127.0.0.1) 8.27ms
+[I 2026-03-26 10:42:57.374 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518177345 (wfrederick@::ffff:127.0.0.1) 7.88ms
+[I 2026-03-26 10:42:58.111 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518178079 (wfrederick@::ffff:127.0.0.1) 8.01ms
+[I 2026-03-26 10:42:58.207 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518178183 (wfrederick@::ffff:127.0.0.1) 1.45ms
+[I 2026-03-26 10:42:58.218 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518178186 (wfrederick@::ffff:127.0.0.1) 2.00ms
+[I 2026-03-26 10:42:58.224 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518178192 (wfrederick@::ffff:127.0.0.1) 1.40ms
+[I 2026-03-26 10:42:58.229 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518178195 (wfrederick@::ffff:127.0.0.1) 1.40ms
+[I 2026-03-26 10:42:58.241 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518178212 (wfrederick@::ffff:127.0.0.1) 8.52ms
+[I 2026-03-26 10:43:00.489 ServerApp] 200 GET /user/wfrederick/api/me?1774518180432 (wfrederick@::ffff:127.0.0.1) 1.83ms
+[I 2026-03-26 10:43:00.493 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518180433 (wfrederick@::ffff:127.0.0.1) 2.59ms
+[I 2026-03-26 10:43:08.223 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518188198 (wfrederick@::ffff:127.0.0.1) 2.00ms
+[I 2026-03-26 10:43:08.235 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518188211 (wfrederick@::ffff:127.0.0.1) 2.38ms
+[I 2026-03-26 10:43:08.242 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518188213 (wfrederick@::ffff:127.0.0.1) 1.50ms
+[I 2026-03-26 10:43:08.246 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518188219 (wfrederick@::ffff:127.0.0.1) 1.49ms
+[I 2026-03-26 10:43:08.263 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518188235 (wfrederick@::ffff:127.0.0.1) 7.69ms
+[I 2026-03-26 10:43:18.244 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518198216 (wfrederick@::ffff:127.0.0.1) 1.87ms
+[I 2026-03-26 10:43:18.255 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518198226 (wfrederick@::ffff:127.0.0.1) 2.15ms
+[I 2026-03-26 10:43:18.262 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518198232 (wfrederick@::ffff:127.0.0.1) 1.41ms
+[I 2026-03-26 10:43:18.266 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518198236 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:43:18.377 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518198346 (wfrederick@::ffff:127.0.0.1) 8.02ms
+[I 2026-03-26 10:43:28.277 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518208236 (wfrederick@::ffff:127.0.0.1) 1.71ms
+[I 2026-03-26 10:43:28.280 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518208248 (wfrederick@::ffff:127.0.0.1) 2.44ms
+[I 2026-03-26 10:43:28.290 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518208253 (wfrederick@::ffff:127.0.0.1) 1.40ms
+[I 2026-03-26 10:43:28.292 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518208256 (wfrederick@::ffff:127.0.0.1) 1.42ms
+[I 2026-03-26 10:43:28.402 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518208373 (wfrederick@::ffff:127.0.0.1) 8.13ms
+[I 2026-03-26 10:43:33.824 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518213796 (wfrederick@::ffff:127.0.0.1) 4.72ms
+[I 2026-03-26 10:43:34.356 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518214324 (wfrederick@::ffff:127.0.0.1) 8.32ms
+[I 2026-03-26 10:43:38.295 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518218272 (wfrederick@::ffff:127.0.0.1) 1.94ms
+[I 2026-03-26 10:43:38.299 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518218276 (wfrederick@::ffff:127.0.0.1) 2.27ms
+[I 2026-03-26 10:43:38.302 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518218281 (wfrederick@::ffff:127.0.0.1) 1.43ms
+[I 2026-03-26 10:43:38.306 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518218282 (wfrederick@::ffff:127.0.0.1) 1.48ms
+[I 2026-03-26 10:43:38.424 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518218398 (wfrederick@::ffff:127.0.0.1) 4.92ms
+[I 2026-03-26 10:43:38.936 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518218880 (wfrederick@::ffff:127.0.0.1) 35.23ms
+[I 2026-03-26 10:43:39.486 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518219454 (wfrederick@::ffff:127.0.0.1) 7.75ms
+[I 2026-03-26 10:43:48.246 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518228212 (wfrederick@::ffff:127.0.0.1) 8.97ms
+[I 2026-03-26 10:43:48.308 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518228286 (wfrederick@::ffff:127.0.0.1) 1.84ms
+[I 2026-03-26 10:43:48.318 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518228296 (wfrederick@::ffff:127.0.0.1) 2.10ms
+[I 2026-03-26 10:43:48.321 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518228296 (wfrederick@::ffff:127.0.0.1) 1.93ms
+[I 2026-03-26 10:43:48.326 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518228296 (wfrederick@::ffff:127.0.0.1) 1.46ms
+[I 2026-03-26 10:43:48.446 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518228417 (wfrederick@::ffff:127.0.0.1) 8.01ms
+[I 2026-03-26 10:43:48.779 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518228749 (wfrederick@::ffff:127.0.0.1) 8.13ms
+[I 2026-03-26 10:43:58.343 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518238298 (wfrederick@::ffff:127.0.0.1) 1.89ms
+[I 2026-03-26 10:43:58.354 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518238309 (wfrederick@::ffff:127.0.0.1) 2.41ms
+[I 2026-03-26 10:43:58.357 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518238310 (wfrederick@::ffff:127.0.0.1) 2.16ms
+[I 2026-03-26 10:43:58.359 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518238314 (wfrederick@::ffff:127.0.0.1) 3.07ms
+[I 2026-03-26 10:43:58.474 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518238442 (wfrederick@::ffff:127.0.0.1) 8.25ms
+[I 2026-03-26 10:44:01.507 ServerApp] 200 GET /user/wfrederick/api/me?1774518241483 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:44:01.511 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518241483 (wfrederick@::ffff:127.0.0.1) 2.57ms
+[I 2026-03-26 10:44:01.724 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518241698 (wfrederick@::ffff:127.0.0.1) 4.16ms
+[I 2026-03-26 10:44:02.257 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518242224 (wfrederick@::ffff:127.0.0.1) 9.10ms
+[I 2026-03-26 10:44:08.376 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518248335 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:44:08.382 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518248346 (wfrederick@::ffff:127.0.0.1) 2.06ms
+[I 2026-03-26 10:44:08.388 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518248351 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:44:08.390 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518248347 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:44:08.423 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518248395 (wfrederick@::ffff:127.0.0.1) 7.05ms
+[I 2026-03-26 10:44:08.496 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518248469 (wfrederick@::ffff:127.0.0.1) 8.02ms
+[I 2026-03-26 10:44:08.953 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518248924 (wfrederick@::ffff:127.0.0.1) 7.95ms
+[I 2026-03-26 10:44:09.922 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518249895 (wfrederick@::ffff:127.0.0.1) 4.34ms
+[I 2026-03-26 10:44:10.409 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518250379 (wfrederick@::ffff:127.0.0.1) 7.70ms
+[I 2026-03-26 10:44:10.943 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518250911 (wfrederick@::ffff:127.0.0.1) 8.39ms
+[I 2026-03-26 10:44:18.423 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518258367 (wfrederick@::ffff:127.0.0.1) 2.01ms
+[I 2026-03-26 10:44:18.426 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518258377 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:44:18.429 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518258381 (wfrederick@::ffff:127.0.0.1) 2.27ms
+[I 2026-03-26 10:44:18.432 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518258372 (wfrederick@::ffff:127.0.0.1) 3.88ms
+[I 2026-03-26 10:44:18.519 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518258489 (wfrederick@::ffff:127.0.0.1) 7.95ms
+[I 2026-03-26 10:44:23.330 ServerApp] 200 GET /user/wfrederick/lab/api/extensions?refresh=0&1774518263098 (wfrederick@::ffff:127.0.0.1) 208.46ms
+[I 2026-03-26 10:44:23.722 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518263627 (wfrederick@::ffff:127.0.0.1) 7.85ms
+[I 2026-03-26 10:44:24.567 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518264531 (wfrederick@::ffff:127.0.0.1) 8.51ms
+[I 2026-03-26 10:44:25.696 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518265665 (wfrederick@::ffff:127.0.0.1) 10.33ms
+[I 2026-03-26 10:44:28.565 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518268457 (wfrederick@::ffff:127.0.0.1) 1.87ms
+[I 2026-03-26 10:44:28.613 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518268586 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:44:28.619 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518268586 (wfrederick@::ffff:127.0.0.1) 1.93ms
+[I 2026-03-26 10:44:28.623 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518268586 (wfrederick@::ffff:127.0.0.1) 2.07ms
+[I 2026-03-26 10:44:28.634 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518268596 (wfrederick@::ffff:127.0.0.1) 8.55ms
+[I 2026-03-26 10:44:38.628 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518278589 (wfrederick@::ffff:127.0.0.1) 1.90ms
+[I 2026-03-26 10:44:38.804 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518278603 (wfrederick@::ffff:127.0.0.1) 1.71ms
+[I 2026-03-26 10:44:39.267 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518278612 (wfrederick@::ffff:127.0.0.1) 2.49ms
+[I 2026-03-26 10:44:39.297 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518278625 (wfrederick@::ffff:127.0.0.1) 8.17ms
+[I 2026-03-26 10:44:40.075 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518278609 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:44:48.677 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518288637 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:44:48.950 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518288797 (wfrederick@::ffff:127.0.0.1) 1.67ms
+[I 2026-03-26 10:44:49.373 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518289262 (wfrederick@::ffff:127.0.0.1) 2.25ms
+[I 2026-03-26 10:44:49.388 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518289297 (wfrederick@::ffff:127.0.0.1) 7.35ms
+[I 2026-03-26 10:44:50.098 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518290070 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:44:58.709 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518298673 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:44:58.972 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518298945 (wfrederick@::ffff:127.0.0.1) 2.20ms
+[I 2026-03-26 10:44:59.502 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518299411 (wfrederick@::ffff:127.0.0.1) 7.68ms
+[I 2026-03-26 10:44:59.514 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518299413 (wfrederick@::ffff:127.0.0.1) 1.12ms
+[I 2026-03-26 10:45:00.116 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518300091 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:45:02.531 ServerApp] 200 GET /user/wfrederick/api/me?1774518302502 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:45:02.534 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518302502 (wfrederick@::ffff:127.0.0.1) 2.71ms
+[I 2026-03-26 10:45:08.733 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518308701 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:45:08.987 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518308965 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:45:09.531 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518309501 (wfrederick@::ffff:127.0.0.1) 7.71ms
+[I 2026-03-26 10:45:09.539 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518309505 (wfrederick@::ffff:127.0.0.1) 1.12ms
+[I 2026-03-26 10:45:10.254 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518310234 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:45:18.908 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518318722 (wfrederick@::ffff:127.0.0.1) 2.33ms
+[I 2026-03-26 10:45:19.031 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518318978 (wfrederick@::ffff:127.0.0.1) 1.42ms
+[I 2026-03-26 10:45:19.570 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518319530 (wfrederick@::ffff:127.0.0.1) 7.76ms
+[I 2026-03-26 10:45:19.577 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518319531 (wfrederick@::ffff:127.0.0.1) 1.10ms
+[I 2026-03-26 10:45:20.271 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518320245 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:45:28.942 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518328900 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:45:29.095 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518329065 (wfrederick@::ffff:127.0.0.1) 10.31ms
+[I 2026-03-26 10:45:29.175 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518329153 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:45:29.595 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518329568 (wfrederick@::ffff:127.0.0.1) 7.62ms
+[I 2026-03-26 10:45:29.606 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518329570 (wfrederick@::ffff:127.0.0.1) 1.17ms
+[I 2026-03-26 10:45:30.217 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518330176 (wfrederick@::ffff:127.0.0.1) 17.78ms
+[I 2026-03-26 10:45:30.287 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518330263 (wfrederick@::ffff:127.0.0.1) 2.20ms
+[I 2026-03-26 10:45:30.966 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518330843 (wfrederick@::ffff:127.0.0.1) 8.75ms
+[I 2026-03-26 10:45:32.152 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518332110 (wfrederick@::ffff:127.0.0.1) 15.32ms
+[I 2026-03-26 10:45:38.962 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518338935 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:45:39.195 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518339172 (wfrederick@::ffff:127.0.0.1) 1.67ms
+[I 2026-03-26 10:45:39.620 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518339591 (wfrederick@::ffff:127.0.0.1) 7.85ms
+[I 2026-03-26 10:45:39.634 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518339597 (wfrederick@::ffff:127.0.0.1) 1.34ms
+[I 2026-03-26 10:45:40.389 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518340278 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:45:48.989 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518348953 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:45:49.252 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518349231 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:45:49.850 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518349823 (wfrederick@::ffff:127.0.0.1) 7.79ms
+[I 2026-03-26 10:45:49.855 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518349823 (wfrederick@::ffff:127.0.0.1) 1.15ms
+[I 2026-03-26 10:45:50.439 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518350381 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:45:59.023 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518358983 (wfrederick@::ffff:127.0.0.1) 1.87ms
+[I 2026-03-26 10:45:59.265 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518359242 (wfrederick@::ffff:127.0.0.1) 1.83ms
+[I 2026-03-26 10:45:59.875 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518359842 (wfrederick@::ffff:127.0.0.1) 8.44ms
+[I 2026-03-26 10:45:59.877 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518359844 (wfrederick@::ffff:127.0.0.1) 1.18ms
+[I 2026-03-26 10:46:00.457 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518360432 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:46:01.362 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518361281 (wfrederick@::ffff:127.0.0.1) 4.12ms
+[I 2026-03-26 10:46:01.895 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518361864 (wfrederick@::ffff:127.0.0.1) 9.87ms
+[I 2026-03-26 10:46:03.548 ServerApp] 200 GET /user/wfrederick/api/me?1774518363523 (wfrederick@::ffff:127.0.0.1) 1.71ms
+[I 2026-03-26 10:46:03.551 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518363525 (wfrederick@::ffff:127.0.0.1) 2.88ms
+[I 2026-03-26 10:46:09.053 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518369017 (wfrederick@::ffff:127.0.0.1) 1.78ms
+[I 2026-03-26 10:46:09.282 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518369257 (wfrederick@::ffff:127.0.0.1) 1.67ms
+[I 2026-03-26 10:46:09.900 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518369872 (wfrederick@::ffff:127.0.0.1) 5.45ms
+[I 2026-03-26 10:46:09.905 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518369872 (wfrederick@::ffff:127.0.0.1) 1.31ms
+[I 2026-03-26 10:46:10.477 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518370451 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:46:19.207 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518379046 (wfrederick@::ffff:127.0.0.1) 1.86ms
+[I 2026-03-26 10:46:19.297 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518379273 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:46:19.920 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518379893 (wfrederick@::ffff:127.0.0.1) 4.44ms
+[I 2026-03-26 10:46:20.061 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518379898 (wfrederick@::ffff:127.0.0.1) 2.50ms
+[I 2026-03-26 10:46:21.239 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518380493 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:46:29.226 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518389200 (wfrederick@::ffff:127.0.0.1) 1.88ms
+[I 2026-03-26 10:46:29.314 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518389289 (wfrederick@::ffff:127.0.0.1) 1.84ms
+[I 2026-03-26 10:46:29.941 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518389913 (wfrederick@::ffff:127.0.0.1) 5.30ms
+[I 2026-03-26 10:46:30.077 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518390054 (wfrederick@::ffff:127.0.0.1) 2.24ms
+[I 2026-03-26 10:46:31.346 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518391325 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:46:39.253 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518399219 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:46:39.330 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518399306 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:46:39.958 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518399932 (wfrederick@::ffff:127.0.0.1) 4.15ms
+[I 2026-03-26 10:46:40.155 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518400071 (wfrederick@::ffff:127.0.0.1) 2.68ms
+[I 2026-03-26 10:46:41.406 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518401385 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:46:49.280 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518409246 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:46:49.347 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518409323 (wfrederick@::ffff:127.0.0.1) 1.60ms
+[I 2026-03-26 10:46:49.975 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518409950 (wfrederick@::ffff:127.0.0.1) 4.18ms
+[I 2026-03-26 10:46:50.192 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518410167 (wfrederick@::ffff:127.0.0.1) 2.89ms
+[I 2026-03-26 10:46:51.420 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518411396 (wfrederick@::ffff:127.0.0.1) 1.59ms
+[I 2026-03-26 10:46:59.308 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518419272 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:46:59.362 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518419339 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:47:00.080 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518419967 (wfrederick@::ffff:127.0.0.1) 4.30ms
+[I 2026-03-26 10:47:00.209 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518420185 (wfrederick@::ffff:127.0.0.1) 2.30ms
+[I 2026-03-26 10:47:01.439 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518421414 (wfrederick@::ffff:127.0.0.1) 1.63ms
+[I 2026-03-26 10:47:04.566 ServerApp] 200 GET /user/wfrederick/api/me?1774518424540 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:47:04.578 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518424542 (wfrederick@::ffff:127.0.0.1) 2.58ms
+[I 2026-03-26 10:47:09.329 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518429304 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:47:09.377 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518429354 (wfrederick@::ffff:127.0.0.1) 1.50ms
+[I 2026-03-26 10:47:10.218 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518430074 (wfrederick@::ffff:127.0.0.1) 5.36ms
+[I 2026-03-26 10:47:10.229 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518430203 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:47:11.468 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518431431 (wfrederick@::ffff:127.0.0.1) 1.63ms
+[I 2026-03-26 10:47:19.357 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518439320 (wfrederick@::ffff:127.0.0.1) 13.28ms
+[I 2026-03-26 10:47:19.474 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518439368 (wfrederick@::ffff:127.0.0.1) 1.52ms
+[I 2026-03-26 10:47:20.177 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518440148 (wfrederick@::ffff:127.0.0.1) 7.48ms
+[I 2026-03-26 10:47:20.242 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518440217 (wfrederick@::ffff:127.0.0.1) 7.11ms
+[I 2026-03-26 10:47:20.250 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518440222 (wfrederick@::ffff:127.0.0.1) 1.10ms
+[I 2026-03-26 10:47:20.709 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518440679 (wfrederick@::ffff:127.0.0.1) 8.36ms
+[I 2026-03-26 10:47:21.573 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518441462 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:47:22.510 ServerApp] Creating new file in 
+[I 2026-03-26 10:47:22.518 ServerApp] 201 POST /user/wfrederick/api/contents?1774518442482 (wfrederick@::ffff:127.0.0.1) 9.20ms
+[I 2026-03-26 10:47:22.537 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518442509 (wfrederick@::ffff:127.0.0.1) 8.02ms
+[I 2026-03-26 10:47:29.447 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518449350 (wfrederick@::ffff:127.0.0.1) 1.68ms
+[I 2026-03-26 10:47:29.488 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518449465 (wfrederick@::ffff:127.0.0.1) 1.41ms
+[W 2026-03-26 10:47:30.038 ServerApp] 400 PATCH /user/wfrederick/api/contents/untitled.txt?1774518450014 (::ffff:127.0.0.1): Cannot rename file or directory '/untitled.txt'
+[W 2026-03-26 10:47:30.038 ServerApp] wrote error: "Cannot rename file or directory '/untitled.txt'"
+    Traceback (most recent call last):
+      File "/cluster/courses/ml4h/jupyter/lib/python3.12/site-packages/tornado/web.py", line 1790, in _execute
+        result = await result
+                 ^^^^^^^^^^^^
+      File "/cluster/courses/ml4h/jupyter/lib/python3.12/site-packages/jupyter_server/auth/decorator.py", line 73, in inner
+        return await out
+               ^^^^^^^^^
+      File "/cluster/courses/ml4h/jupyter/lib/python3.12/site-packages/jupyter_server/services/contents/handlers.py", line 204, in patch
+        raise web.HTTPError(400, f"Cannot rename file or directory {path!r}")
+    tornado.web.HTTPError: HTTP 400: Bad Request (Cannot rename file or directory '/untitled.txt')
+[W 2026-03-26 10:47:30.050 ServerApp] 400 PATCH /user/wfrederick/api/contents/untitled.txt?1774518450014 (wfrederick@::ffff:127.0.0.1) 13.39ms
+[I 2026-03-26 10:47:30.094 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518450053 (wfrederick@::ffff:127.0.0.1) 7.96ms
+[I 2026-03-26 10:47:30.264 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518450240 (wfrederick@::ffff:127.0.0.1) 2.16ms
+[I 2026-03-26 10:47:31.597 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518451572 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:47:39.473 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518459439 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:47:39.505 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518459482 (wfrederick@::ffff:127.0.0.1) 1.47ms
+[I 2026-03-26 10:47:40.115 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518460087 (wfrederick@::ffff:127.0.0.1) 9.15ms
+[I 2026-03-26 10:47:40.291 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518460256 (wfrederick@::ffff:127.0.0.1) 1.38ms
+[I 2026-03-26 10:47:41.613 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518461587 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:47:47.390 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518467142 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:47:47.395 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out?type=file&content=1&hash=1&format=text&contentProviderId=undefined&1774518467127 (wfrederick@::ffff:127.0.0.1) 3.86ms
+[I 2026-03-26 10:47:47.447 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out/checkpoints?1774518467424 (wfrederick@::ffff:127.0.0.1) 3.58ms
+[I 2026-03-26 10:47:47.447 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out/checkpoints?1774518467424 (wfrederick@::ffff:127.0.0.1) 2.04ms
+[I 2026-03-26 10:47:47.453 ServerApp] 200 GET /user/wfrederick/api/contents/slurm-42165.out/checkpoints?1774518467429 (wfrederick@::ffff:127.0.0.1) 1.29ms
+[I 2026-03-26 10:47:47.458 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518467440 (wfrederick@::ffff:127.0.0.1) 0.76ms
+[I 2026-03-26 10:47:47.804 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518467678 (wfrederick@::ffff:127.0.0.1) 20.02ms
+[I 2026-03-26 10:47:48.477 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518468435 (wfrederick@::ffff:127.0.0.1) 19.93ms
+[I 2026-03-26 10:47:49.523 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518469496 (wfrederick@::ffff:127.0.0.1) 2.26ms
+[I 2026-03-26 10:47:50.147 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518470110 (wfrederick@::ffff:127.0.0.1) 13.78ms
+[I 2026-03-26 10:47:50.409 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518470304 (wfrederick@::ffff:127.0.0.1) 4.10ms
+[I 2026-03-26 10:47:51.654 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518471632 (wfrederick@::ffff:127.0.0.1) 1.99ms
+[I 2026-03-26 10:47:57.472 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518477448 (wfrederick@::ffff:127.0.0.1) 2.11ms
+[I 2026-03-26 10:47:59.546 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518479521 (wfrederick@::ffff:127.0.0.1) 1.91ms
+[I 2026-03-26 10:48:00.191 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518480159 (wfrederick@::ffff:127.0.0.1) 8.95ms
+[I 2026-03-26 10:48:00.426 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518480401 (wfrederick@::ffff:127.0.0.1) 3.11ms
+[I 2026-03-26 10:48:01.671 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518481645 (wfrederick@::ffff:127.0.0.1) 1.81ms
+[I 2026-03-26 10:48:05.614 ServerApp] 200 GET /user/wfrederick/api/me?1774518485560 (wfrederick@::ffff:127.0.0.1) 1.87ms
+[I 2026-03-26 10:48:05.624 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518485570 (wfrederick@::ffff:127.0.0.1) 3.31ms
+[I 2026-03-26 10:48:07.486 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518487462 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:48:09.564 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518489539 (wfrederick@::ffff:127.0.0.1) 2.27ms
+[I 2026-03-26 10:48:10.221 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518490189 (wfrederick@::ffff:127.0.0.1) 8.80ms
+[I 2026-03-26 10:48:10.444 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518490419 (wfrederick@::ffff:127.0.0.1) 2.40ms
+[I 2026-03-26 10:48:11.703 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518491663 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:48:17.502 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518497476 (wfrederick@::ffff:127.0.0.1) 1.79ms
+[W 2026-03-26 10:48:19.437 ServerApp] 400 PATCH /user/wfrederick/api/contents/untitled.txt?1774518499412 (::ffff:127.0.0.1): Cannot rename file or directory '/untitled.txt'
+[W 2026-03-26 10:48:19.437 ServerApp] wrote error: "Cannot rename file or directory '/untitled.txt'"
+    Traceback (most recent call last):
+      File "/cluster/courses/ml4h/jupyter/lib/python3.12/site-packages/tornado/web.py", line 1790, in _execute
+        result = await result
+                 ^^^^^^^^^^^^
+      File "/cluster/courses/ml4h/jupyter/lib/python3.12/site-packages/jupyter_server/auth/decorator.py", line 73, in inner
+        return await out
+               ^^^^^^^^^
+      File "/cluster/courses/ml4h/jupyter/lib/python3.12/site-packages/jupyter_server/services/contents/handlers.py", line 204, in patch
+        raise web.HTTPError(400, f"Cannot rename file or directory {path!r}")
+    tornado.web.HTTPError: HTTP 400: Bad Request (Cannot rename file or directory '/untitled.txt')
+[W 2026-03-26 10:48:19.440 ServerApp] 400 PATCH /user/wfrederick/api/contents/untitled.txt?1774518499412 (wfrederick@::ffff:127.0.0.1) 4.95ms
+[I 2026-03-26 10:48:19.481 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518499441 (wfrederick@::ffff:127.0.0.1) 8.07ms
+[I 2026-03-26 10:48:19.964 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518499939 (wfrederick@::ffff:127.0.0.1) 1.68ms
+[I 2026-03-26 10:48:20.459 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518500437 (wfrederick@::ffff:127.0.0.1) 2.32ms
+[I 2026-03-26 10:48:21.723 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518501698 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:48:27.533 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518507494 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:48:29.507 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518509475 (wfrederick@::ffff:127.0.0.1) 8.97ms
+[I 2026-03-26 10:48:29.977 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518509954 (wfrederick@::ffff:127.0.0.1) 1.68ms
+[I 2026-03-26 10:48:30.477 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518510453 (wfrederick@::ffff:127.0.0.1) 2.29ms
+[I 2026-03-26 10:48:31.826 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518511715 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:48:37.601 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518517526 (wfrederick@::ffff:127.0.0.1) 1.79ms
+[I 2026-03-26 10:48:39.539 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518519505 (wfrederick@::ffff:127.0.0.1) 8.75ms
+[I 2026-03-26 10:48:39.994 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518519970 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:48:40.491 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518520469 (wfrederick@::ffff:127.0.0.1) 2.33ms
+[I 2026-03-26 10:48:41.843 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518521819 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:48:44.813 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518524776 (wfrederick@::ffff:127.0.0.1) 17.90ms
+[I 2026-03-26 10:48:47.618 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518527593 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:48:49.656 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518529536 (wfrederick@::ffff:127.0.0.1) 9.19ms
+[I 2026-03-26 10:48:50.009 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518529985 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:48:50.509 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518530483 (wfrederick@::ffff:127.0.0.1) 2.27ms
+[I 2026-03-26 10:48:51.857 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518531834 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:48:57.651 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518537615 (wfrederick@::ffff:127.0.0.1) 1.85ms
+[I 2026-03-26 10:48:59.687 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518539655 (wfrederick@::ffff:127.0.0.1) 8.84ms
+[I 2026-03-26 10:49:00.025 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518540000 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:49:00.526 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518540501 (wfrederick@::ffff:127.0.0.1) 2.34ms
+[I 2026-03-26 10:49:01.870 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518541848 (wfrederick@::ffff:127.0.0.1) 1.60ms
+[I 2026-03-26 10:49:04.366 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518544334 (wfrederick@::ffff:127.0.0.1) 9.64ms
+[I 2026-03-26 10:49:06.632 ServerApp] 200 GET /user/wfrederick/api/me?1774518546606 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:49:06.647 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518546615 (wfrederick@::ffff:127.0.0.1) 3.14ms
+[I 2026-03-26 10:49:07.669 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518547643 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:49:10.095 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518550024 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:49:10.620 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518550518 (wfrederick@::ffff:127.0.0.1) 2.20ms
+[I 2026-03-26 10:49:11.885 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518551861 (wfrederick@::ffff:127.0.0.1) 1.80ms
+[I 2026-03-26 10:49:14.393 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518554363 (wfrederick@::ffff:127.0.0.1) 9.24ms
+[I 2026-03-26 10:49:17.686 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518557660 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:49:20.113 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518560088 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:49:20.640 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518560614 (wfrederick@::ffff:127.0.0.1) 2.86ms
+[I 2026-03-26 10:49:21.902 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518561877 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:49:24.423 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518564390 (wfrederick@::ffff:127.0.0.1) 9.23ms
+[I 2026-03-26 10:49:27.702 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518567675 (wfrederick@::ffff:127.0.0.1) 1.80ms
+[I 2026-03-26 10:49:30.129 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518570104 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:49:30.657 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518570631 (wfrederick@::ffff:127.0.0.1) 2.36ms
+[I 2026-03-26 10:49:31.666 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518571639 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[W 2026-03-26 10:49:31.889 ServerApp] delete /untitled.txt
+[I 2026-03-26 10:49:31.897 ServerApp] 204 DELETE /user/wfrederick/api/contents/untitled.txt?1774518571868 (wfrederick@::ffff:127.0.0.1) 9.66ms
+[I 2026-03-26 10:49:31.912 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518571886 (wfrederick@::ffff:127.0.0.1) 7.43ms
+[I 2026-03-26 10:49:31.920 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518571893 (wfrederick@::ffff:127.0.0.1) 0.75ms
+[I 2026-03-26 10:49:33.415 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518573385 (wfrederick@::ffff:127.0.0.1) 8.09ms
+[I 2026-03-26 10:49:37.719 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518577694 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:49:40.147 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518580122 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:49:40.673 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518580649 (wfrederick@::ffff:127.0.0.1) 2.86ms
+[I 2026-03-26 10:49:42.075 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518581910 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:49:43.443 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518583411 (wfrederick@::ffff:127.0.0.1) 8.04ms
+[I 2026-03-26 10:49:47.736 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518587711 (wfrederick@::ffff:127.0.0.1) 1.86ms
+[I 2026-03-26 10:49:50.162 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518590139 (wfrederick@::ffff:127.0.0.1) 1.84ms
+[I 2026-03-26 10:49:50.691 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518590666 (wfrederick@::ffff:127.0.0.1) 2.44ms
+[I 2026-03-26 10:49:52.094 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518592069 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:49:53.474 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518593441 (wfrederick@::ffff:127.0.0.1) 8.66ms
+[I 2026-03-26 10:49:57.803 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518597728 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:50:00.257 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518600154 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:50:00.708 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518600684 (wfrederick@::ffff:127.0.0.1) 2.37ms
+[I 2026-03-26 10:50:02.112 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518602086 (wfrederick@::ffff:127.0.0.1) 2.17ms
+[I 2026-03-26 10:50:03.502 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518603471 (wfrederick@::ffff:127.0.0.1) 7.99ms
+[I 2026-03-26 10:50:07.654 ServerApp] 200 GET /user/wfrederick/api/me?1774518607627 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:50:07.666 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518607639 (wfrederick@::ffff:127.0.0.1) 2.51ms
+[I 2026-03-26 10:50:07.820 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518607796 (wfrederick@::ffff:127.0.0.1) 1.78ms
+[I 2026-03-26 10:50:10.494 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518610464 (wfrederick@::ffff:127.0.0.1) 1.63ms
+[I 2026-03-26 10:50:10.779 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518610702 (wfrederick@::ffff:127.0.0.1) 2.36ms
+[I 2026-03-26 10:50:12.128 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518612104 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:50:13.534 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518613501 (wfrederick@::ffff:127.0.0.1) 7.98ms
+[I 2026-03-26 10:50:17.835 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518617812 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:50:20.513 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518620487 (wfrederick@::ffff:127.0.0.1) 1.83ms
+[I 2026-03-26 10:50:20.798 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518620773 (wfrederick@::ffff:127.0.0.1) 3.11ms
+[I 2026-03-26 10:50:22.142 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518622118 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:50:23.568 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518623532 (wfrederick@::ffff:127.0.0.1) 10.18ms
+[I 2026-03-26 10:50:27.853 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518627826 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:50:30.529 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518630505 (wfrederick@::ffff:127.0.0.1) 1.67ms
+[I 2026-03-26 10:50:30.812 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518630789 (wfrederick@::ffff:127.0.0.1) 2.31ms
+[I 2026-03-26 10:50:32.159 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518632134 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:50:33.601 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518633567 (wfrederick@::ffff:127.0.0.1) 8.37ms
+[I 2026-03-26 10:50:34.998 ServerApp] 200 GET /user/wfrederick/api/contents?content=1&hash=0&1774518634967 (wfrederick@::ffff:127.0.0.1) 7.98ms
+[I 2026-03-26 10:50:37.871 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518637843 (wfrederick@::ffff:127.0.0.1) 1.74ms
+[I 2026-03-26 10:50:39.211 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data?content=1&hash=0&1774518639183 (wfrederick@::ffff:127.0.0.1) 4.07ms
+[I 2026-03-26 10:50:39.745 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518639712 (wfrederick@::ffff:127.0.0.1) 10.25ms
+[I 2026-03-26 10:50:40.070 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518640017 (wfrederick@::ffff:127.0.0.1) 31.79ms
+[I 2026-03-26 10:50:40.542 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518640520 (wfrederick@::ffff:127.0.0.1) 1.36ms
+[I 2026-03-26 10:50:40.614 ServerApp] 204 PUT /user/wfrederick/lab/api/workspaces/default?1774518640587 (wfrederick@::ffff:127.0.0.1) 7.85ms
+[I 2026-03-26 10:50:40.826 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518640803 (wfrederick@::ffff:127.0.0.1) 2.26ms
+[I 2026-03-26 10:50:42.175 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518642153 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:50:43.655 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518643600 (wfrederick@::ffff:127.0.0.1) 31.46ms
+[I 2026-03-26 10:50:47.892 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518647862 (wfrederick@::ffff:127.0.0.1) 1.47ms
+[I 2026-03-26 10:50:50.560 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518650534 (wfrederick@::ffff:127.0.0.1) 1.70ms
+[I 2026-03-26 10:50:50.842 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518650818 (wfrederick@::ffff:127.0.0.1) 2.31ms
+[I 2026-03-26 10:50:52.191 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518652165 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:50:53.705 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518653654 (wfrederick@::ffff:127.0.0.1) 29.20ms
+[I 2026-03-26 10:50:57.911 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518657886 (wfrederick@::ffff:127.0.0.1) 1.85ms
+[I 2026-03-26 10:51:00.580 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518660555 (wfrederick@::ffff:127.0.0.1) 1.83ms
+[I 2026-03-26 10:51:00.862 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518660836 (wfrederick@::ffff:127.0.0.1) 2.42ms
+[I 2026-03-26 10:51:02.220 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518662183 (wfrederick@::ffff:127.0.0.1) 1.75ms
+[I 2026-03-26 10:51:03.759 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518663704 (wfrederick@::ffff:127.0.0.1) 32.44ms
+[I 2026-03-26 10:51:07.928 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518667903 (wfrederick@::ffff:127.0.0.1) 1.78ms
+[I 2026-03-26 10:51:08.674 ServerApp] 200 GET /user/wfrederick/api/me?1774518668648 (wfrederick@::ffff:127.0.0.1) 1.81ms
+[I 2026-03-26 10:51:08.685 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518668659 (wfrederick@::ffff:127.0.0.1) 4.31ms
+[I 2026-03-26 10:51:10.599 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518670572 (wfrederick@::ffff:127.0.0.1) 1.82ms
+[I 2026-03-26 10:51:10.880 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518670855 (wfrederick@::ffff:127.0.0.1) 3.26ms
+[I 2026-03-26 10:51:12.246 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518672220 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:51:13.812 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518673758 (wfrederick@::ffff:127.0.0.1) 31.53ms
+[I 2026-03-26 10:51:17.945 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518677921 (wfrederick@::ffff:127.0.0.1) 1.86ms
+[I 2026-03-26 10:51:20.616 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518680591 (wfrederick@::ffff:127.0.0.1) 1.87ms
+[I 2026-03-26 10:51:20.896 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518680872 (wfrederick@::ffff:127.0.0.1) 2.32ms
+[I 2026-03-26 10:51:22.260 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518682238 (wfrederick@::ffff:127.0.0.1) 1.78ms
+[I 2026-03-26 10:51:23.868 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518683813 (wfrederick@::ffff:127.0.0.1) 31.28ms
+[I 2026-03-26 10:51:27.961 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518687936 (wfrederick@::ffff:127.0.0.1) 1.91ms
+[I 2026-03-26 10:51:30.633 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518690608 (wfrederick@::ffff:127.0.0.1) 1.85ms
+[I 2026-03-26 10:51:30.914 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518690888 (wfrederick@::ffff:127.0.0.1) 2.55ms
+[I 2026-03-26 10:51:32.281 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518692252 (wfrederick@::ffff:127.0.0.1) 1.77ms
+[I 2026-03-26 10:51:33.925 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518693866 (wfrederick@::ffff:127.0.0.1) 32.31ms
+[I 2026-03-26 10:51:37.978 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518697954 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:51:40.649 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518700624 (wfrederick@::ffff:127.0.0.1) 1.68ms
+[I 2026-03-26 10:51:40.932 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518700907 (wfrederick@::ffff:127.0.0.1) 2.35ms
+[I 2026-03-26 10:51:42.298 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518702272 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:51:43.979 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518703924 (wfrederick@::ffff:127.0.0.1) 30.92ms
+[I 2026-03-26 10:51:47.994 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518707971 (wfrederick@::ffff:127.0.0.1) 1.44ms
+[I 2026-03-26 10:51:50.677 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518710641 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:51:50.949 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518710924 (wfrederick@::ffff:127.0.0.1) 2.92ms
+[I 2026-03-26 10:51:52.316 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518712291 (wfrederick@::ffff:127.0.0.1) 1.68ms
+[I 2026-03-26 10:51:54.032 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518713977 (wfrederick@::ffff:127.0.0.1) 31.51ms
+[I 2026-03-26 10:51:58.010 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518717986 (wfrederick@::ffff:127.0.0.1) 1.45ms
+[I 2026-03-26 10:52:00.693 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518720669 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:52:00.969 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518720943 (wfrederick@::ffff:127.0.0.1) 2.31ms
+[I 2026-03-26 10:52:02.335 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518722308 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:52:04.087 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518724030 (wfrederick@::ffff:127.0.0.1) 31.32ms
+[I 2026-03-26 10:52:08.024 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518728001 (wfrederick@::ffff:127.0.0.1) 1.85ms
+[I 2026-03-26 10:52:09.693 ServerApp] 200 GET /user/wfrederick/api/me?1774518729666 (wfrederick@::ffff:127.0.0.1) 1.72ms
+[I 2026-03-26 10:52:09.703 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518729677 (wfrederick@::ffff:127.0.0.1) 2.59ms
+[I 2026-03-26 10:52:10.714 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518730686 (wfrederick@::ffff:127.0.0.1) 1.71ms
+[I 2026-03-26 10:52:10.990 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518730963 (wfrederick@::ffff:127.0.0.1) 2.14ms
+[I 2026-03-26 10:52:12.351 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518732326 (wfrederick@::ffff:127.0.0.1) 1.61ms
+[I 2026-03-26 10:52:14.141 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518734086 (wfrederick@::ffff:127.0.0.1) 31.27ms
+[I 2026-03-26 10:52:18.041 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518738015 (wfrederick@::ffff:127.0.0.1) 1.47ms
+[I 2026-03-26 10:52:20.744 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518740706 (wfrederick@::ffff:127.0.0.1) 14.72ms
+[I 2026-03-26 10:52:21.008 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518740982 (wfrederick@::ffff:127.0.0.1) 2.32ms
+[I 2026-03-26 10:52:22.368 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518742343 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:52:24.196 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518744141 (wfrederick@::ffff:127.0.0.1) 30.76ms
+[I 2026-03-26 10:52:28.059 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518748033 (wfrederick@::ffff:127.0.0.1) 1.51ms
+[I 2026-03-26 10:52:30.763 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518750738 (wfrederick@::ffff:127.0.0.1) 1.69ms
+[I 2026-03-26 10:52:31.028 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518751002 (wfrederick@::ffff:127.0.0.1) 2.28ms
+[I 2026-03-26 10:52:32.568 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518752547 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:52:34.246 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518754193 (wfrederick@::ffff:127.0.0.1) 31.99ms
+[I 2026-03-26 10:52:38.075 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518758051 (wfrederick@::ffff:127.0.0.1) 1.67ms
+[I 2026-03-26 10:52:40.778 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518760755 (wfrederick@::ffff:127.0.0.1) 1.67ms
+[I 2026-03-26 10:52:41.249 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518761224 (wfrederick@::ffff:127.0.0.1) 3.03ms
+[I 2026-03-26 10:52:42.582 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518762558 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:52:44.299 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518764244 (wfrederick@::ffff:127.0.0.1) 31.59ms
+[I 2026-03-26 10:52:48.093 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518768070 (wfrederick@::ffff:127.0.0.1) 1.45ms
+[I 2026-03-26 10:52:50.793 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518770770 (wfrederick@::ffff:127.0.0.1) 1.73ms
+[I 2026-03-26 10:52:51.269 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518771243 (wfrederick@::ffff:127.0.0.1) 2.39ms
+[I 2026-03-26 10:52:52.597 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518772574 (wfrederick@::ffff:127.0.0.1) 1.62ms
+[I 2026-03-26 10:52:54.351 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518774297 (wfrederick@::ffff:127.0.0.1) 31.23ms
+[I 2026-03-26 10:52:58.110 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518778086 (wfrederick@::ffff:127.0.0.1) 1.47ms
+[I 2026-03-26 10:53:00.807 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518780783 (wfrederick@::ffff:127.0.0.1) 1.65ms
+[I 2026-03-26 10:53:01.286 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518781262 (wfrederick@::ffff:127.0.0.1) 2.10ms
+[I 2026-03-26 10:53:02.611 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518782588 (wfrederick@::ffff:127.0.0.1) 1.66ms
+[I 2026-03-26 10:53:04.402 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518784349 (wfrederick@::ffff:127.0.0.1) 30.59ms
+[I 2026-03-26 10:53:08.130 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518788102 (wfrederick@::ffff:127.0.0.1) 1.54ms
+[I 2026-03-26 10:53:10.707 ServerApp] 200 GET /user/wfrederick/api/me?1774518790685 (wfrederick@::ffff:127.0.0.1) 1.63ms
+[I 2026-03-26 10:53:10.725 ServerApp] 200 GET /user/wfrederick/api/kernelspecs?1774518790693 (wfrederick@::ffff:127.0.0.1) 3.91ms
+[I 2026-03-26 10:53:10.822 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518790800 (wfrederick@::ffff:127.0.0.1) 1.68ms
+[I 2026-03-26 10:53:11.302 ServerApp] 200 GET /user/wfrederick/lab/api/workspaces?1774518791281 (wfrederick@::ffff:127.0.0.1) 2.33ms
+[I 2026-03-26 10:53:12.625 ServerApp] 200 GET /user/wfrederick/api/terminals?1774518792603 (wfrederick@::ffff:127.0.0.1) 1.64ms
+[I 2026-03-26 10:53:14.466 ServerApp] 200 GET /user/wfrederick/api/contents/ml4h_data/p1?content=1&hash=0&1774518794408 (wfrederick@::ffff:127.0.0.1) 31.04ms
+[I 2026-03-26 10:53:18.160 ServerApp] 200 GET /user/wfrederick/api/sessions?1774518798139 (wfrederick@::ffff:127.0.0.1) 1.48ms
+[I 2026-03-26 10:53:20.837 ServerApp] 200 GET /user/wfrederick/api/kernels?1774518800813 (wfrederick@::ffff:127.0.0.1) 1.68ms

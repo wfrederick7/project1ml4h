@@ -1,0 +1,2 @@
+srun: error: studgpu-node01: task 0: Exited with exit code 2
+[2026-03-26T10:26:01.946] error: execve(): /home/wfrederick/jupyter/bin/batchspawner-singleuser: No such file or directory
