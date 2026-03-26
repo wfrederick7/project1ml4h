@@ -29,7 +29,7 @@ from tqdm import tqdm
 # ---------------------------------------------------------------------------
 
 DATA_ROOT = Path(os.path.expanduser("~/ml4h_data/p1"))
-OUTPUT_DIR = Path(os.path.expanduser("~/ml4h_p1/data/processed"))
+OUTPUT_DIR = Path(os.path.expanduser("~/project1ml4h/data/processed"))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 SETS = ["a", "b", "c"]
