@@ -111,6 +111,7 @@ def parse_patient(filepath: Path) -> pd.DataFrame:
         mask = (raw["Parameter"] == param_name) & (raw["Time"] == "00:00")
         rows = raw[mask]
         static_vals[col_name] = float(rows["Value"].iloc[0]) if not rows.empty else np.nan
+        static_vals[col_name] = np.nan if val == -1.0 else val
 
     # ---- Dynamic variable grid (hour -> variable -> value) ----
     n_hours = 49  # hours 0 to 48
