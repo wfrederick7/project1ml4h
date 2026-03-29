@@ -3,6 +3,8 @@
 *.err
 
 # Outputs & data
+figures/
+checkpoints/
 output/
 data/
 libs/

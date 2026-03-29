@@ -1,0 +1,174 @@
+# =============================================================================
+# Project Configuration
+# =============================================================================
+
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+paths:
+  data_raw:       ~/ml4h_data/p1
+  data_processed: ~/project1ml4h/data/processed
+  data_derived:   ~/project1ml4h/data/processed_derived
+  checkpoints:    ~/project1ml4h/checkpoints
+
+# ---------------------------------------------------------------------------
+# Data — shared column definitions and preprocessing rules
+# ---------------------------------------------------------------------------
+data:
+  id_col:     PatientID
+  time_col:   Time
+  target_col: label
+  n_hours:    49
+
+  static_cols:
+    - Age
+    - Gender
+    - Height
+    - Weight_static
+
+  dynamic_cols:
+    - ALP
+    - ALT
+    - AST
+    - Albumin
+    - BUN
+    - Bilirubin
+    - Cholesterol
+    - Creatinine
+    - DiasABP
+    - FiO2
+    - GCS
+    - Glucose
+    - HCO3
+    - HCT
+    - HR
+    - K
+    - Lactate
+    - MAP
+    - MechVent
+    - Mg
+    - NIDiasABP
+    - NIMAP
+    - NISysABP
+    - Na
+    - PaCO2
+    - PaO2
+    - Platelets
+    - RespRate
+    - SaO2
+    - SysABP
+    - Temp
+    - TroponinI
+    - TroponinT
+    - Urine
+    - WBC
+    - Weight
+    - pH
+
+  binary_cols:
+    - Gender
+    - MechVent
+
+  # Right-skewed variables transformed with log1p before scaling
+  log_cols:
+    - ALP
+    - ALT
+    - AST
+    - Bilirubin
+    - BUN
+    - Creatinine
+    - Glucose
+    - Lactate
+    - Platelets
+    - TroponinI
+    - TroponinT
+    - Urine
+    - WBC
+
+  # Physiologically implausible values are set to NaN before imputation
+  valid_ranges:
+    Height:        [50,  250]
+    Temp:          [30,   45]
+    Weight:        [20,  300]
+    Weight_static: [20,  300]
+    pH:            [6.5,  8.0]
+
+  train_file: set_a_linear.parquet
+  val_file:   set_b_linear.parquet
+  test_file:  set_c_linear.parquet
+
+  # Precomputed embedding files (written by pretrain_nce.py, stored in checkpoints/)
+  emb_train: embeddings_train.npz
+  emb_val:   embeddings_val.npz
+  emb_test:  embeddings_test.npz
+
+# ---------------------------------------------------------------------------
+# Representation Learning
+# ---------------------------------------------------------------------------
+representation_learning:
+
+  seed: 42
+
+  model:
+    input_dim:  41    # must equal len(static_cols) + len(dynamic_cols)
+    hidden_dim: 128
+    num_layers: 2
+    proj_dim:   64    # projection head output dimension
+
+  pretrain:
+    # Contrastive augmentation
+    crop_len:       32
+    noise_std:      0.05
+    channel_drop_p: 0.10
+
+    # InfoNCE loss temperature
+    tau: 0.10
+
+    # Optimiser
+    lr:           3.0e-4
+    weight_decay: 1.0e-4
+
+    # Schedule
+    batch_size:     512   # GTX 1080 Ti 11 GB, model is small, memory is not the limit
+    epochs:         256
+    warmup_epochs:  16
+    eval_every:     16
+    num_workers:    0     # dataset is fully in-memory; workers add pickling overhead
+
+  # Logistic regression linear probe (evaluation of encoder quality)
+  linear_probe:
+    C:         1.0
+    max_iter:  1000
+    solver:    lbfgs
+
+  # Label-scarcity experiment (Q3.2)
+  label_scarce:
+    n_patients: [100, 500, 1000]
+    supervised_epochs: 50
+    supervised_lr: 1.0e-3
+    supervised_wd: 1.0e-4
+    batch_size: 64
+
+# ---------------------------------------------------------------------------
+# Supervised Learning
+# ---------------------------------------------------------------------------
+supervised_learning:
+
+  seed: 42
+
+  # Placeholder for downstream supervised models
+  # model:
+  #   type: xgboost | mlp | logistic
+  #   ...
+
+# ---------------------------------------------------------------------------
+# Foundation Models
+# ---------------------------------------------------------------------------
+foundation_models:
+
+  seed: 42
+
+  # Placeholder — e.g. adapter fine-tuning on top of a pretrained encoder
+  # freeze_encoder: true
+  # adapter_dim: 32
+  # lr: 1.0e-4
