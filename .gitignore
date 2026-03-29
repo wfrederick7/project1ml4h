@@ -12,6 +12,7 @@ hf_cache/
 *.parquet
 *.pkl
 *.csv
+*.npy
 
 
 # Python
