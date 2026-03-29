@@ -5,6 +5,8 @@
 # Outputs & data
 output/
 data/
+libs/
+hf_cache/
 *.parquet
 *.pkl
 *.csv
