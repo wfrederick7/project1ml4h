@@ -1,6 +1,6 @@
 from multiprocessing import context
 import sys
-from libs.chronos.chronos2 import pipeline
+from chronos import ChronosPipeline
 import numpy as np
 import pandas as pd
 import torch
