@@ -1,0 +1,53 @@
+{
+  "feature_type": "engineered_q2_1_2",
+  "description": "Static variables plus first/last/mean/min/max/std/delta/slope for each dynamic variable.",
+  "logistic_regression": {
+    "best_config": {
+      "C": 0.01,
+      "class_weight": null
+    },
+    "validation": {
+      "auroc": 0.8510389991463935,
+      "auprc": 0.533403068629619
+    },
+    "test": {
+      "auroc": 0.8572617036453055,
+      "auprc": 0.5285185534279856
+    }
+  },
+  "random_forest": {
+    "best_config": {
+      "n_estimators": 300,
+      "max_depth": 10,
+      "min_samples_leaf": 5,
+      "class_weight": null
+    },
+    "validation": {
+      "auroc": 0.8480826685052036,
+      "auprc": 0.5274197643137816
+    },
+    "test": {
+      "auroc": 0.8449665252593512,
+      "auprc": 0.5169064186888023
+    }
+  },
+  "xgboost": {
+    "best_config": {
+      "n_estimators": 300,
+      "learning_rate": 0.03,
+      "max_depth": 4,
+      "min_child_weight": 1,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "scale_pos_weight": 1.0
+    },
+    "validation": {
+      "auroc": 0.8693202337568535,
+      "auprc": 0.5606196505747625
+    },
+    "test": {
+      "auroc": 0.8636928583048642,
+      "auprc": 0.5542231667816369
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "feature_type": "last",
+  "description": "One row per patient using the final hourly state after causal preprocessing.",
+  "logistic_regression": {
+    "best_config": {
+      "C": 0.1,
+      "class_weight": null
+    },
+    "validation": {
+      "auroc": 0.8451776363308053,
+      "auprc": 0.5254244232673695
+    },
+    "test": {
+      "auroc": 0.847028319004893,
+      "auprc": 0.5059044468155385
+    }
+  },
+  "random_forest": {
+    "best_config": {
+      "n_estimators": 300,
+      "max_depth": 10,
+      "min_samples_leaf": 1,
+      "class_weight": null
+    },
+    "validation": {
+      "auroc": 0.8436022604156408,
+      "auprc": 0.5299009817273621
+    },
+    "test": {
+      "auroc": 0.84624294527662,
+      "auprc": 0.517367795985374
+    }
+  },
+  "xgboost": {
+    "best_config": {
+      "n_estimators": 300,
+      "learning_rate": 0.03,
+      "max_depth": 4,
+      "min_child_weight": 1,
+      "subsample": 0.8,
+      "colsample_bytree": 0.8,
+      "scale_pos_weight": 1.0
+    },
+    "validation": {
+      "auroc": 0.8582895244426936,
+      "auprc": 0.5309194551901635
+    },
+    "test": {
+      "auroc": 0.8589150429853212,
+      "auprc": 0.5382086507843001
+    }
+  }
+}
