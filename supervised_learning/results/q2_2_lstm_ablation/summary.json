@@ -1,0 +1,542 @@
+{
+  "uni_last": {
+    "config": {
+      "name": "uni_last",
+      "bidirectional": false,
+      "pooling": "last",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8214064398043271,
+      "auprc": 0.4630553988976388
+    },
+    "validation": {
+      "auroc": 0.8214064398043271,
+      "auprc": 0.4630553988976388
+    },
+    "test": {
+      "auroc": 0.8166124813855414,
+      "auprc": 0.4485491268083474
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_last_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_last_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_last_test_predictions.csv"
+    }
+  },
+  "uni_mean": {
+    "config": {
+      "name": "uni_mean",
+      "bidirectional": false,
+      "pooling": "mean",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8133520675334056,
+      "auprc": 0.4301690060672275
+    },
+    "validation": {
+      "auroc": 0.8133520675334056,
+      "auprc": 0.4301690060672275
+    },
+    "test": {
+      "auroc": 0.8049069589918785,
+      "auprc": 0.4250511803107324
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_mean_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_mean_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_mean_test_predictions.csv"
+    }
+  },
+  "uni_recency_2": {
+    "config": {
+      "name": "uni_recency_2",
+      "bidirectional": false,
+      "pooling": "recency",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8198741546012671,
+      "auprc": 0.4628230379090796
+    },
+    "validation": {
+      "auroc": 0.8198741546012671,
+      "auprc": 0.4628230379090796
+    },
+    "test": {
+      "auroc": 0.8042437211397679,
+      "auprc": 0.4462279025832471
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_recency_2_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_recency_2_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/uni_recency_2_test_predictions.csv"
+    }
+  },
+  "bi_last": {
+    "config": {
+      "name": "bi_last",
+      "bidirectional": true,
+      "pooling": "last",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8269297457237598,
+      "auprc": 0.4953943293411285
+    },
+    "validation": {
+      "auroc": 0.8269297457237598,
+      "auprc": 0.4953943293411285
+    },
+    "test": {
+      "auroc": 0.8214043122974309,
+      "auprc": 0.47641618727556134
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_last_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_last_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_last_test_predictions.csv"
+    }
+  },
+  "bi_mean": {
+    "config": {
+      "name": "bi_mean",
+      "bidirectional": true,
+      "pooling": "mean",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8176847360386093,
+      "auprc": 0.4557546863136814
+    },
+    "validation": {
+      "auroc": 0.8176847360386093,
+      "auprc": 0.4557546863136814
+    },
+    "test": {
+      "auroc": 0.7937024940246025,
+      "auprc": 0.4231852942432562
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_mean_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_mean_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_mean_test_predictions.csv"
+    }
+  },
+  "bi_max": {
+    "config": {
+      "name": "bi_max",
+      "bidirectional": true,
+      "pooling": "max",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8158333743721068,
+      "auprc": 0.43567663838675236
+    },
+    "validation": {
+      "auroc": 0.8158333743721068,
+      "auprc": 0.43567663838675236
+    },
+    "test": {
+      "auroc": 0.8137543016605975,
+      "auprc": 0.43224524494890176
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_max_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_max_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_max_test_predictions.csv"
+    }
+  },
+  "bi_recency_0": {
+    "config": {
+      "name": "bi_recency_0",
+      "bidirectional": true,
+      "pooling": "recency",
+      "recency_strength": 0.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8210129805640368,
+      "auprc": 0.4524117570390635
+    },
+    "validation": {
+      "auroc": 0.8210129805640368,
+      "auprc": 0.4524117570390635
+    },
+    "test": {
+      "auroc": 0.8074838257561536,
+      "auprc": 0.4334756662684475
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_0_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_0_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_0_test_predictions.csv"
+    }
+  },
+  "bi_recency_1": {
+    "config": {
+      "name": "bi_recency_1",
+      "bidirectional": true,
+      "pooling": "recency",
+      "recency_strength": 1.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8283040316491022,
+      "auprc": 0.4658432836767914
+    },
+    "validation": {
+      "auroc": 0.8283040316491022,
+      "auprc": 0.4658432836767914
+    },
+    "test": {
+      "auroc": 0.8150026904931736,
+      "auprc": 0.45057952490586084
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_1_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_1_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_1_test_predictions.csv"
+    }
+  },
+  "bi_recency_2": {
+    "config": {
+      "name": "bi_recency_2",
+      "bidirectional": true,
+      "pooling": "recency",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.8311141616599363,
+      "auprc": 0.46807679804904045
+    },
+    "validation": {
+      "auroc": 0.8311141616599363,
+      "auprc": 0.46807679804904045
+    },
+    "test": {
+      "auroc": 0.8211435221684125,
+      "auprc": 0.45564101615137786
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_2_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_2_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_2_test_predictions.csv"
+    }
+  },
+  "bi_recency_4": {
+    "config": {
+      "name": "bi_recency_4",
+      "bidirectional": true,
+      "pooling": "recency",
+      "recency_strength": 4.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.830512430644473,
+      "auprc": 0.4750973175627362
+    },
+    "validation": {
+      "auroc": 0.830512430644473,
+      "auprc": 0.4750973175627362
+    },
+    "test": {
+      "auroc": 0.8230050931661473,
+      "auprc": 0.46282807037467216
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_4_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_4_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_recency_4_test_predictions.csv"
+    }
+  },
+  "bi_attention": {
+    "config": {
+      "name": "bi_attention",
+      "bidirectional": true,
+      "pooling": "attention",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.825756293295906,
+      "auprc": 0.45425897582575137
+    },
+    "validation": {
+      "auroc": 0.825756293295906,
+      "auprc": 0.45425897582575137
+    },
+    "test": {
+      "auroc": 0.8164037491709528,
+      "auprc": 0.4420315956570923
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_test_predictions.csv"
+    }
+  },
+  "bi_attention_mlp": {
+    "config": {
+      "name": "bi_attention_mlp",
+      "bidirectional": true,
+      "pooling": "attention",
+      "recency_strength": 2.0,
+      "use_mask_delta": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 64
+    },
+    "input_dim": 41,
+    "best_validation": {
+      "auroc": 0.816603877343314,
+      "auprc": 0.4478915417458715
+    },
+    "validation": {
+      "auroc": 0.816603877343314,
+      "auprc": 0.4478915417458715
+    },
+    "test": {
+      "auroc": 0.8003433820124889,
+      "auprc": 0.423091016332025
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mlp_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mlp_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mlp_test_predictions.csv"
+    }
+  },
+  "bi_mean_mask_delta": {
+    "config": {
+      "name": "bi_mean_mask_delta",
+      "bidirectional": true,
+      "pooling": "mean",
+      "recency_strength": 2.0,
+      "use_mask_delta": true,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 123,
+    "best_validation": {
+      "auroc": 0.814665308283266,
+      "auprc": 0.4164506555334145
+    },
+    "validation": {
+      "auroc": 0.814665308283266,
+      "auprc": 0.4164506555334145
+    },
+    "test": {
+      "auroc": 0.8110593034751161,
+      "auprc": 0.4227900664166055
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_mean_mask_delta_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_mean_mask_delta_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_mean_mask_delta_test_predictions.csv"
+    }
+  },
+  "bi_attention_mask_delta": {
+    "config": {
+      "name": "bi_attention_mask_delta",
+      "bidirectional": true,
+      "pooling": "attention",
+      "recency_strength": 2.0,
+      "use_mask_delta": true,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 0
+    },
+    "input_dim": 123,
+    "best_validation": {
+      "auroc": 0.8046226074395089,
+      "auprc": 0.41434368144702166
+    },
+    "validation": {
+      "auroc": 0.8046226074395089,
+      "auprc": 0.41434368144702166
+    },
+    "test": {
+      "auroc": 0.8058364930985721,
+      "auprc": 0.42260164025628794
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mask_delta_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mask_delta_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mask_delta_test_predictions.csv"
+    }
+  },
+  "bi_attention_mask_delta_mlp": {
+    "config": {
+      "name": "bi_attention_mask_delta_mlp",
+      "bidirectional": true,
+      "pooling": "attention",
+      "recency_strength": 2.0,
+      "use_mask_delta": true,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 64,
+      "max_epochs": 50,
+      "patience": 8,
+      "mlp_hidden_dim": 64
+    },
+    "input_dim": 123,
+    "best_validation": {
+      "auroc": 0.7775996011031221,
+      "auprc": 0.37444340591867903
+    },
+    "validation": {
+      "auroc": 0.7775996011031221,
+      "auprc": 0.37444340591867903
+    },
+    "test": {
+      "auroc": 0.7905609991115116,
+      "auprc": 0.38437022329396525
+    },
+    "artifacts": {
+      "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mask_delta_mlp_best.pt",
+      "history_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mask_delta_mlp_history.csv",
+      "test_predictions_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm_ablation/bi_attention_mask_delta_mlp_test_predictions.csv"
+    }
+  }
+}

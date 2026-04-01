@@ -1,0 +1,48 @@
+{
+  "unidirectional_lstm": {
+    "config_name": "unidirectional_lstm",
+    "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm/unidirectional_lstm_best_model.pt",
+    "validation": {
+      "auroc": 0.810065118273745,
+      "auprc": 0.43747716884898225
+    },
+    "test": {
+      "auroc": 0.8064972281663352,
+      "auprc": 0.4298377206759753
+    },
+    "hyperparameters": {
+      "bidirectional": false,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "max_epochs": 50,
+      "patience": 8,
+      "recency_strength": 2.0
+    }
+  },
+  "bidirectional_lstm": {
+    "config_name": "bidirectional_lstm",
+    "model_path": "/home/ikioura/project1ml4h/supervised_learning/results/q2_2_lstm/bidirectional_lstm_best_model.pt",
+    "validation": {
+      "auroc": 0.8295654609475032,
+      "auprc": 0.47064213799510146
+    },
+    "test": {
+      "auroc": 0.8216400745829737,
+      "auprc": 0.4556741800337758
+    },
+    "hyperparameters": {
+      "bidirectional": true,
+      "hidden_dim": 64,
+      "num_layers": 1,
+      "dropout": 0.2,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "max_epochs": 50,
+      "patience": 8,
+      "recency_strength": 2.0
+    }
+  }
+}
