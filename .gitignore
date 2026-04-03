@@ -3,6 +3,7 @@
 *.err
 
 # Outputs & data
+rep_learning/results/
 figures/
 checkpoints/
 output/
