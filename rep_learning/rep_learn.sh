@@ -1,10 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=p1_pretrain
+#SBATCH --job-name=p1_rep_learning
 #SBATCH --account=ml4h
 #SBATCH --time=00:30:00
-#SBATCH --mem=16G
-#SBATCH --output=pretrain.out
-#SBATCH --error=pretrain.err
+#SBATCH --mem=32G
+#SBATCH --output=rep_learning.out
+#SBATCH --error=rep_learning.err
+
+set -euo pipefail
 
 cd /home/$USER/project1ml4h
 

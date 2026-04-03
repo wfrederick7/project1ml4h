@@ -14,7 +14,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 # Config
 # ---------------------------------------------------------------------------
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-_CFG = yaml.safe_load(open(PROJECT_ROOT / "config.yaml"))
+with open(PROJECT_ROOT / "config.yaml", "r", encoding="utf-8") as f:
+    _CFG = yaml.safe_load(f)
 _DATA = _CFG["data"]
 _PT = _CFG["representation_learning"]["pretrain"]
 
@@ -28,6 +29,7 @@ FEATURE_COLS = STATIC_COLS + DYNAMIC_COLS
 ID_COL     = _DATA["id_col"]
 TIME_COL   = _DATA["time_col"]
 TARGET_COL = _DATA["target_col"]
+N_HOURS = int(_DATA["n_hours"])
 
 # ---------------------------------------------------------------------------
 # Augmentation parameters
@@ -47,13 +49,16 @@ class ICUPatientDataset(Dataset):
         df = pd.read_parquet(parquet_path)
         df = df.sort_values([ID_COL, TIME_COL]).reset_index(drop=True)
 
-        self.patient_ids = df[ID_COL].unique()
+        self.patient_ids = df[ID_COL].drop_duplicates().to_numpy()
         self.features = {}
         self.labels = {}
 
-        for pid in self.patient_ids:
-            pat = df[df[ID_COL] == pid]
+        for pid, pat in df.groupby(ID_COL, sort=False):
             feat = pat[FEATURE_COLS].values.astype(np.float32)
+            if feat.shape[0] != N_HOURS:
+                raise ValueError(
+                    f"Patient {pid} has {feat.shape[0]} rows; expected {N_HOURS}."
+                )
             self.features[pid] = torch.from_numpy(feat)
             label_vals = pat[TARGET_COL].values
             self.labels[pid] = float(label_vals[0]) if not np.isnan(label_vals[0]) else np.nan
@@ -75,6 +80,10 @@ def augment(x: torch.Tensor) -> torch.Tensor:
     Returns: (CROP_LEN, n_features) augmented tensor.
     """
     seq_len = x.shape[0]
+    if seq_len < CROP_LEN:
+        raise ValueError(
+            f"Cannot crop length {CROP_LEN} from sequence length {seq_len}."
+        )
     max_start = seq_len - CROP_LEN
     start = random.randint(0, max_start)
     crop = x[start : start + CROP_LEN].clone()

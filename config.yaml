@@ -111,8 +111,10 @@ representation_learning:
 
   model:
     input_dim:  41    # must equal len(static_cols) + len(dynamic_cols)
-    hidden_dim: 128
-    num_layers: 2
+    hidden_dim: 64    # match Q2.2 BiLSTM
+    num_layers: 1     # match Q2.2 BiLSTM
+    dropout:    0.2   # match Q2.2 BiLSTM
+    recency_strength: 2.0  # match Q2.2 recency pooling
     proj_dim:   64    # projection head output dimension
 
   pretrain:
@@ -148,6 +150,13 @@ representation_learning:
     supervised_lr: 1.0e-3
     supervised_wd: 1.0e-4
     batch_size: 64
+    patience: 8       # early stopping patience (match Q2.2)
+    transformer:
+      d_model: 128
+      nhead: 8
+      num_layers: 2
+      dim_feedforward: 256
+      dropout: 0.2
 
 # ---------------------------------------------------------------------------
 # Supervised Learning

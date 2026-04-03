@@ -6,7 +6,7 @@
 #SBATCH --output=process.out
 #SBATCH --error=process.err
 
-cd /home/$USER/project1ml4h/preprocessing
+cd /home/$USER/project1ml4h/data_prep
 
 source /cluster/courses/ml4h/jupyter/bin/activate
 
