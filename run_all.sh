@@ -23,7 +23,7 @@ sbatch --wait rep_learning/rep_learn.sh
 
 echo "=== Foundation Models ==="
 sbatch --wait foundation_models/predict_evaluate.sh
-sbatch --wait foundation_models/chronos_pipeline.sh
 sbatch --wait foundation_models/plotting.sh
+sbatch --wait foundation_models/chronos_pipeline.sh
 
 echo "All stages completed."
