@@ -19,3 +19,5 @@ python rep_learning/linear_probe.py
 python rep_learning/label_scarce_predict.py
 
 python rep_learning/visualize_rep.py
+
+python rep_learning/plot_appendix_figures.py
