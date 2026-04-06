@@ -131,11 +131,11 @@ representation_learning:
     weight_decay: 1.0e-4
 
     # Schedule
-    batch_size:     512   # GTX 1080 Ti 11 GB, model is small, memory is not the limit
+    batch_size:     512 
     epochs:         256
     warmup_epochs:  16
     eval_every:     16
-    num_workers:    0     # dataset is fully in-memory; workers add pickling overhead
+    num_workers:    0
 
   # Logistic regression linear probe (evaluation of encoder quality)
   linear_probe:
@@ -146,7 +146,7 @@ representation_learning:
   # Label-scarcity experiment (Q3.2)
   label_scarce:
     n_patients: [100, 500, 1000]
-    supervised_epochs: 50
+    supervised_epochs: 75
     supervised_lr: 1.0e-3
     supervised_wd: 1.0e-4
     batch_size: 64
