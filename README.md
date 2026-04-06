@@ -50,6 +50,8 @@ sbatch foundation_models/chronos_pipeline.sh
 - Python env used by scripts: `/cluster/courses/ml4h/jupyter/bin/activate`
 
 **MAKE SURE ALL SCRIPTS GET DATA FROM THE SAME PLACE**
+
+
 **FIX PYTHON ENVIRONMENT HANDLING SO ALL SCRIPTS RUN - CURRENTLY UMAPS AND ENTIRETY OF FINAL CHRONOS SCRIPT DONT RUN ON NORMAL ENV**
 
 ## Pipeline Overview (Q1-Q4)
