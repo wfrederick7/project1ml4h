@@ -4,6 +4,7 @@
 
 # Outputs & data
 rep_learning/results/
+supervised_learning/results/
 figures/
 checkpoints/
 output/
