@@ -3,8 +3,8 @@
 #SBATCH --account=ml4h
 #SBATCH --time=03:00:00
 #SBATCH --mem=32G
-#SBATCH --output=chronos.out
-#SBATCH --error=chronos.err
+#SBATCH --output=slurm_logs/chronos.out
+#SBATCH --error=slurm_logs/chronos.err
 
 cd /home/$USER/project1ml4h/foundation_models
 

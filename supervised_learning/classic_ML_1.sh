@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=p1_pretrain
+#SBATCH --job-name=classic_ml_1
 #SBATCH --account=ml4h
 #SBATCH --time=00:30:00
 #SBATCH --mem=16G
-#SBATCH --output=pretrain.out
-#SBATCH --error=pretrain.err
+#SBATCH --output=slurm_logs/classic_ml_1.out
+#SBATCH --error=slurm_logs/classic_ml_1.err
 
 cd /home/$USER/project1ml4h
 

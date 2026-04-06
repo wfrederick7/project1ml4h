@@ -3,6 +3,7 @@
 *.err
 
 # Outputs & data
+slurm_logs/
 rep_learning/results/
 supervised_learning/results/
 figures/

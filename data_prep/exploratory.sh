@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=p1_exploratory
+#SBATCH --job-name=exploratory
 #SBATCH --account=ml4h
 #SBATCH --time=01:00:00
 #SBATCH --mem=16G
-#SBATCH --output=exploratory.out
-#SBATCH --error=exploratory.err
+#SBATCH --output=slurm_logs/exploratory.out
+#SBATCH --error=slurm_logs/exploratory.err
 
 set -euo pipefail
 

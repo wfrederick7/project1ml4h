@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=p1_rep_learning
+#SBATCH --job-name=rep_learning
 #SBATCH --account=ml4h
 #SBATCH --time=00:30:00
 #SBATCH --mem=32G
-#SBATCH --output=rep_learning.out
-#SBATCH --error=rep_learning.err
+#SBATCH --output=slurm_logs/rep_learning.out
+#SBATCH --error=slurm_logs/rep_learning.err
 
 set -euo pipefail
 

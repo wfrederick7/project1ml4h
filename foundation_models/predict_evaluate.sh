@@ -3,8 +3,8 @@
 #SBATCH --account=ml4h
 #SBATCH --time=6:00:00
 #SBATCH --mem=16G
-#SBATCH --output=foundation%j.out
-#SBATCH --error=foundation%j.err
+#SBATCH --output=slurm_logs/foundation%j.out
+#SBATCH --error=slurm_logs/foundation%j.err
 
 # Activate the course environment
 module load cuda/12.6
