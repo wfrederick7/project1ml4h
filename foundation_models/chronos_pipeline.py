@@ -1,5 +1,6 @@
 from multiprocessing import context
 import sys
+from pathlib import Path
 from chronos import ChronosPipeline
 import numpy as np
 import pandas as pd
@@ -20,9 +21,10 @@ BATCH_SIZE = 32
 EPOCHS = 50
 LR = 1e-3
 
-TRAIN_PATH = "/home/wfrederick/project1ml4h/data/processed_derived/set_a_ffill.parquet"
-TEST_PATH  = "/home/wfrederick/project1ml4h/data/processed_derived/set_c_ffill.parquet"
-SCALER_PATH = "/home/wfrederick/project1ml4h/data/processed_derived/set_a_linear_scaler_params.csv"
+BASE_DIR = Path.home() / "project1ml4h"
+TRAIN_PATH = BASE_DIR / "data" / "processed_derived" / "set_a_ffill.parquet"
+TEST_PATH = BASE_DIR / "data" / "processed_derived" / "set_c_ffill.parquet"
+SCALER_PATH = BASE_DIR / "data" / "processed_derived" / "set_a_linear_scaler_params.csv"
 
 DYNAMIC_COLS = [
     "ALP", "ALT", "AST", "Albumin", "BUN", "Bilirubin", "Cholesterol",

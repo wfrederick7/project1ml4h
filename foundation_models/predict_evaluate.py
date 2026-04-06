@@ -4,6 +4,7 @@ import ollama
 import json
 import re
 import sys
+from pathlib import Path
 from pydantic import BaseModel, ValidationError, field_validator
 from typing import Literal
 from sklearn.metrics import roc_auc_score, average_precision_score, silhouette_score
@@ -22,6 +23,7 @@ MODEL = 'llama3.1:latest'
 # =============================================================================
 
 client = ollama.Client(host='http://127.0.0.1:11435')
+BASE_DIR = Path.home() / "project1ml4h"
 
 ID_COLS = ["PatientID", "Time"]
 BINARY_COLS = ["Gender", "MechVent", "label"]
@@ -293,8 +295,8 @@ def run_embedding_pipeline(train_df, test_df):
 # =============================================================================
 if __name__ == "__main__":
     print("Loading data...", flush=True)
-    train_df = pd.read_parquet("/home/wfrederick/project1ml4h/data/processed/set_a.parquet")
-    test_df = pd.read_parquet("/home/wfrederick/project1ml4h/data/processed/set_c.parquet")
+    train_df = pd.read_parquet(BASE_DIR / "data" / "processed" / "set_a.parquet")
+    test_df = pd.read_parquet(BASE_DIR / "data" / "processed" / "set_c.parquet")
 
     zero_shot_metrics = None
     few_shot_metrics = None
