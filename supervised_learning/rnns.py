@@ -169,17 +169,6 @@ class ICUSequenceDataset(Dataset):
 # Model
 # =========================================================
 
-class AttentionPooling(nn.Module):
-    def __init__(self, dim):
-        super().__init__()
-        self.score = nn.Linear(dim, 1)
-
-    def forward(self, h):
-        a = torch.softmax(self.score(h).squeeze(-1), dim=1)
-        pooled = torch.sum(h * a.unsqueeze(-1), dim=1)
-        return pooled, a
-
-
 class SequenceClassifier(nn.Module):
     def __init__(
         self,
@@ -208,7 +197,6 @@ class SequenceClassifier(nn.Module):
         out_dim = hidden_dim * (2 if bidirectional else 1)
 
         self.dropout = nn.Dropout(dropout)
-        self.attn = AttentionPooling(out_dim) if pooling == "attention" else None
 
         # ONLY linear head
         self.head = nn.Linear(out_dim, 1)
@@ -228,8 +216,6 @@ class SequenceClassifier(nn.Module):
         if self.pooling == "recency":
             w = self.recency_weights(h.size(1), h.device)
             return (h * w.view(1, -1, 1)).sum(1), None
-        if self.pooling == "attention":
-            return self.attn(h)
         raise ValueError
 
     def forward(self, x):
@@ -319,10 +305,7 @@ def build_experiments():
         ExperimentConfig("bi_recency_5", True, "recency", 5),
         ExperimentConfig("bi_recency_6", True, "recency", 6),
 
-        ExperimentConfig("bi_attention", True, "attention"),
-
         ExperimentConfig("bi_mean_mask_delta", True, "mean", use_mask_delta=True),
-        ExperimentConfig("bi_attention_mask_delta", True, "attention", use_mask_delta=True),
     ]
 
 
