@@ -22,6 +22,7 @@ hf_cache/
 __pycache__/
 *.egg-info/
 .venv/
+.tmp_py_pkgs/
 
 # Jupyter
 .ipynb_checkpoints/
