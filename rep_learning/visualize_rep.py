@@ -17,6 +17,7 @@ from sklearn.cluster import KMeans
 from sklearn.manifold import TSNE
 from sklearn.metrics import (
     adjusted_rand_score,
+    davies_bouldin_score,
     normalized_mutual_info_score,
     silhouette_score,
 )
@@ -109,17 +110,20 @@ def leiden_cluster(X, n_neighbors=15, seed=0):
 def compute_clustering_metrics(X, y_true):
     """Clustering metrics on X, evaluated against the ground-truth labels.
 
-    - KMeans(k=2) ARI / NMI: compare an unsupervised 2-way split of the
-      embedding space to the true mortality labels.
-    - Leiden ARI / NMI: compare communities found on a kNN similarity graph
-      (no fixed k, better suited to non-spherical structure) to y_true.
-    - Silhouette: computed using y_true directly as the cluster assignment,
-      so it measures how tightly the true classes cluster in X.
+    Primary metrics (geometry of true classes in X):
+    - Silhouette: how tightly the true classes cluster (higher is better, [-1, 1]).
+    - Davies-Bouldin: average cluster similarity (lower is better, >=0).
+
+    Secondary (unsupervised partition agreement with y_true):
+    - KMeans(k=2) ARI / NMI.
+    - Leiden ARI / NMI on a kNN similarity graph.
     """
     km_labels = KMeans(n_clusters=2, random_state=SEED, n_init=10).fit_predict(X)
     leiden_labels = leiden_cluster(X, n_neighbors=15, seed=SEED)
 
     metrics = {
+        "silhouette_true_labels": float(silhouette_score(X, y_true)),
+        "davies_bouldin_true_labels": float(davies_bouldin_score(X, y_true)),
         "kmeans_k2": {
             "ari": float(adjusted_rand_score(y_true, km_labels)),
             "nmi": float(normalized_mutual_info_score(y_true, km_labels)),
@@ -130,12 +134,12 @@ def compute_clustering_metrics(X, y_true):
             "nmi": float(normalized_mutual_info_score(y_true, leiden_labels)),
             "n_clusters": int(len(np.unique(leiden_labels))),
         },
-        "silhouette_true_labels": float(silhouette_score(X, y_true)),
     }
     # Backwards-compatible aliases used by the plot titles below.
+    metrics["silhouette"] = metrics["silhouette_true_labels"]
+    metrics["davies_bouldin"] = metrics["davies_bouldin_true_labels"]
     metrics["ari"] = metrics["kmeans_k2"]["ari"]
     metrics["nmi"] = metrics["kmeans_k2"]["nmi"]
-    metrics["silhouette"] = metrics["silhouette_true_labels"]
     return metrics
 
 
@@ -161,9 +165,10 @@ def main():
     # --- Clustering metrics on full-dimensional embeddings ---
     print("\nClustering metrics (full-dimensional embeddings):")
     metrics_real = compute_clustering_metrics(X_all, y_all)
-    print(f"  ARI        = {metrics_real['ari']:.4f}")
-    print(f"  NMI        = {metrics_real['nmi']:.4f}")
-    print(f"  Silhouette = {metrics_real['silhouette']:.4f}")
+    print(f"  Silhouette    = {metrics_real['silhouette']:.4f}")
+    print(f"  Davies-Bouldin= {metrics_real['davies_bouldin']:.4f}")
+    print(f"  ARI (km/k=2)  = {metrics_real['ari']:.4f}")
+    print(f"  NMI (km/k=2)  = {metrics_real['nmi']:.4f}")
 
     # --- Random baseline: random 2D projection ---
     rng = np.random.RandomState(SEED)
@@ -172,9 +177,10 @@ def main():
 
     metrics_rand = compute_clustering_metrics(X_rand_2d, y_all)
     print(f"\nRandom baseline (random 2D projection):")
-    print(f"  ARI        = {metrics_rand['ari']:.4f}")
-    print(f"  NMI        = {metrics_rand['nmi']:.4f}")
-    print(f"  Silhouette = {metrics_rand['silhouette']:.4f}")
+    print(f"  Silhouette    = {metrics_rand['silhouette']:.4f}")
+    print(f"  Davies-Bouldin= {metrics_rand['davies_bouldin']:.4f}")
+    print(f"  ARI (km/k=2)  = {metrics_rand['ari']:.4f}")
+    print(f"  NMI (km/k=2)  = {metrics_rand['nmi']:.4f}")
 
     # --- Dimensionality reduction ---
     print("\nRunning t-SNE (perplexity=30) ...")
@@ -203,12 +209,12 @@ def main():
 
     scatter_2d(
         tsne_coords, y_all,
-        f"t-SNE (perp=30)\nARI={metrics_tsne['ari']:.3f}  Sil={metrics_tsne['silhouette']:.3f}",
+        f"t-SNE (perp=30)\nSil={metrics_tsne['silhouette']:.3f}  DB={metrics_tsne['davies_bouldin']:.3f}",
         axes[0],
     )
     scatter_2d(
         umap_coords, y_all,
-        f"UMAP (nn=15)\nARI={metrics_umap['ari']:.3f}  Sil={metrics_umap['silhouette']:.3f}",
+        f"UMAP (nn=15)\nSil={metrics_umap['silhouette']:.3f}  DB={metrics_umap['davies_bouldin']:.3f}",
         axes[1],
     )
 
@@ -224,7 +230,7 @@ def main():
     scatter_2d(
         X_rand_2d, y_all,
         f"Random 2D Projection (baseline)\n"
-        f"ARI={metrics_rand['ari']:.3f}  Sil={metrics_rand['silhouette']:.3f}",
+        f"Sil={metrics_rand['silhouette']:.3f}  DB={metrics_rand['davies_bouldin']:.3f}",
         ax_rand,
     )
     fig_rand.tight_layout()

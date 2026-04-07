@@ -90,11 +90,11 @@ n_labels = [100, 500, 1000, 4000]
 x_labels = ["100", "500", "1000", "Full"]
 
 models = {
-    "UniLSTM": "uni_lstm_q2_2",
+    "XGBoost": "xgboost_q2_1_2",
     "BiLSTM": "bi_lstm_q2_2",
     "Transformer": "transformer_q2_3a",
 }
-colors_scratch = {"UniLSTM": "#94a3b8", "BiLSTM": "#64748b", "Transformer": "#475569"}
+colors_scratch = {"XGBoost": "#0ea5e9", "BiLSTM": "#64748b", "Transformer": "#475569"}
 probe_color = "#ef4444"
 
 fig, (ax_roc, ax_prc) = plt.subplots(1, 2, figsize=(10, 4.5))
