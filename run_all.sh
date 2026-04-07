@@ -5,6 +5,17 @@ cd /home/$USER/project1ml4h
 
 mkdir -p slurm_logs
 
+VENV_DIR="/work/scratch/$USER/.venv"
+if [ ! -d "$VENV_DIR" ]; then
+    echo "=== Creating venv at $VENV_DIR ==="
+    mkdir -p "/work/scratch/$USER"
+    python3 -m venv "$VENV_DIR"
+    source "$VENV_DIR/bin/activate"
+    pip install --no-cache-dir --upgrade pip
+    pip install --no-cache-dir -r requirements.txt
+fi
+source ./activate_env.sh
+
 echo "=== Data Preparation ==="
 sbatch --wait data_prep/preprocess.sh
 sbatch --wait data_prep/exploratory.sh
