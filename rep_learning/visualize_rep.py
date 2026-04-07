@@ -21,13 +21,10 @@ from sklearn.metrics import (
     silhouette_score,
 )
 
-try:
-    import umap
-    HAS_UMAP = True
-except ImportError:
-    HAS_UMAP = False
-    print("Warning: umap-learn not installed. UMAP plots will be skipped. "
-          "Install with: pip install umap-learn")
+import igraph as ig
+import leidenalg as la
+import umap
+from sklearn.neighbors import NearestNeighbors
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from utils import run_metadata, save_json, seed_everything
@@ -83,17 +80,63 @@ def scatter_2d(coords, labels, title, ax):
 # ---------------------------------------------------------------------------
 # Clustering metrics
 # ---------------------------------------------------------------------------
+def leiden_cluster(X, n_neighbors=15, seed=0):
+    """Leiden community detection on a symmetric kNN graph built from X."""
+    nn = NearestNeighbors(n_neighbors=n_neighbors + 1, metric="euclidean").fit(X)
+    dists, idxs = nn.kneighbors(X)
+
+    sources, targets, weights = [], [], []
+    for i in range(X.shape[0]):
+        for k in range(1, n_neighbors + 1):
+            sources.append(i)
+            targets.append(int(idxs[i, k]))
+            # Gaussian-style similarity so closer neighbours weigh more.
+            weights.append(float(np.exp(-dists[i, k])))
+
+    g = ig.Graph(n=X.shape[0], edges=list(zip(sources, targets)), directed=False)
+    g.es["weight"] = weights
+    g.simplify(combine_edges={"weight": "max"})
+
+    part = la.find_partition(
+        g,
+        la.RBConfigurationVertexPartition,
+        weights="weight",
+        seed=seed,
+    )
+    return np.array(part.membership, dtype=int)
+
+
 def compute_clustering_metrics(X, y_true):
-    """Compute KMeans-based ARI, NMI, and Silhouette Score."""
+    """Clustering metrics on X, evaluated against the ground-truth labels.
+
+    - KMeans(k=2) ARI / NMI: compare an unsupervised 2-way split of the
+      embedding space to the true mortality labels.
+    - Leiden ARI / NMI: compare communities found on a kNN similarity graph
+      (no fixed k, better suited to non-spherical structure) to y_true.
+    - Silhouette: computed using y_true directly as the cluster assignment,
+      so it measures how tightly the true classes cluster in X.
+    """
     km_labels = KMeans(n_clusters=2, random_state=SEED, n_init=10).fit_predict(X)
-    ari = adjusted_rand_score(y_true, km_labels)
-    nmi = normalized_mutual_info_score(y_true, km_labels)
-    sil = silhouette_score(X, y_true)
-    return {
-        "ari": float(ari),
-        "nmi": float(nmi),
-        "silhouette": float(sil),
+    leiden_labels = leiden_cluster(X, n_neighbors=15, seed=SEED)
+
+    metrics = {
+        "kmeans_k2": {
+            "ari": float(adjusted_rand_score(y_true, km_labels)),
+            "nmi": float(normalized_mutual_info_score(y_true, km_labels)),
+            "n_clusters": int(len(np.unique(km_labels))),
+        },
+        "leiden": {
+            "ari": float(adjusted_rand_score(y_true, leiden_labels)),
+            "nmi": float(normalized_mutual_info_score(y_true, leiden_labels)),
+            "n_clusters": int(len(np.unique(leiden_labels))),
+        },
+        "silhouette_true_labels": float(silhouette_score(X, y_true)),
     }
+    # Backwards-compatible aliases used by the plot titles below.
+    metrics["ari"] = metrics["kmeans_k2"]["ari"]
+    metrics["nmi"] = metrics["kmeans_k2"]["nmi"]
+    metrics["silhouette"] = metrics["silhouette_true_labels"]
+    return metrics
 
 
 # ---------------------------------------------------------------------------
@@ -135,36 +178,39 @@ def main():
 
     # --- Dimensionality reduction ---
     print("\nRunning t-SNE (perplexity=30) ...")
-    tsne_coords = TSNE(n_components=2, random_state=SEED, perplexity=30).fit_transform(X_all)
+    tsne_coords = TSNE(
+        n_components=2,
+        random_state=SEED,
+        perplexity=30,
+        init="pca",
+        learning_rate="auto",
+        metric="euclidean",
+    ).fit_transform(X_all)
     metrics_tsne = compute_clustering_metrics(tsne_coords, y_all)
 
-    umap_coords = None
-    metrics_umap = None
-    if HAS_UMAP:
-        print("Running UMAP (n_neighbors=15) ...")
-        umap_coords = umap.UMAP(
-            n_components=2, random_state=SEED, n_neighbors=15, min_dist=0.1,
-        ).fit_transform(X_all)
-        metrics_umap = compute_clustering_metrics(umap_coords, y_all)
+    print("Running UMAP (n_neighbors=15) ...")
+    umap_coords = umap.UMAP(
+        n_components=2,
+        random_state=SEED,
+        n_neighbors=15,
+        min_dist=0.1,
+        metric="euclidean",
+    ).fit_transform(X_all)
+    metrics_umap = compute_clustering_metrics(umap_coords, y_all)
 
     # --- Figures ---
-    n_cols = 2 if umap_coords is not None else 1
-    fig, axes = plt.subplots(1, n_cols, figsize=(7 * n_cols, 6))
-    if n_cols == 1:
-        axes = [axes]
+    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
     scatter_2d(
         tsne_coords, y_all,
         f"t-SNE (perp=30)\nARI={metrics_tsne['ari']:.3f}  Sil={metrics_tsne['silhouette']:.3f}",
         axes[0],
     )
-
-    if umap_coords is not None:
-        scatter_2d(
-            umap_coords, y_all,
-            f"UMAP (nn=15)\nARI={metrics_umap['ari']:.3f}  Sil={metrics_umap['silhouette']:.3f}",
-            axes[1],
-        )
+    scatter_2d(
+        umap_coords, y_all,
+        f"UMAP (nn=15)\nARI={metrics_umap['ari']:.3f}  Sil={metrics_umap['silhouette']:.3f}",
+        axes[1],
+    )
 
     fig.suptitle("Pretrained Encoder Embeddings — Mortality Label", fontsize=14)
     fig.tight_layout()
@@ -210,7 +256,6 @@ def main():
             "embedding_visualisation": str(out_path),
             "embedding_random_baseline": str(out_rand),
         },
-        "umap_available": HAS_UMAP,
     }
     summary_path = RESULTS_DIR / "summary.json"
     save_json(summary_path, summary)
