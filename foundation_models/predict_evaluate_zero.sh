@@ -9,7 +9,7 @@
 # Activate the course environment
 module load cuda/12.6
 cd /home/$USER/project1ml4h/foundation_models
-source /cluster/courses/ml4h/jupyter/bin/activate
+source "$SLURM_SUBMIT_DIR/activate_env.sh"
 
 # Start ollama on a custom port
 OLLAMA_MODELS=/cluster/courses/ml4h/llm/models OLLAMA_HOST=127.0.0.1:11435 /cluster/courses/ml4h/llm/bin/ollama serve &

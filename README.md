@@ -33,8 +33,8 @@ sbatch rep_learning/rep_learn.sh
 sbatch foundation_models/predict_evaluate_zero.sh
 sbatch foundation_models/predict_evaluate_few.sh
 sbatch foundation_models/predict_evaluate_emb.sh
-sbatch foundation_models/plotting.sh
 sbatch foundation_models/chronos_pipeline.sh
+sbatch foundation_models/plotting.sh
 ```
 
 Stages must run in order (Q1 before Q2, etc.). Within each stage, scripts should also run sequentially.
@@ -45,4 +45,4 @@ Stages must run in order (Q1 before Q2, etc.). Within each stage, scripts should
 - **Repository path:** `~/project1ml4h`
 - **Raw data path:** `~/ml4h_data/p1`
 - **Python venv:** `/work/scratch/$USER/.venv` — created automatically by `run_all.sh`, activated in each script via `source activate_env.sh`
-- **Q4 (LLM scripts):** `predict_evaluate_zero.sh` and `predict_evaluate_emb.sh` use the course environment (`/cluster/courses/ml4h/jupyter/bin/activate`) and start a local Ollama server (`127.0.0.1:11435`) for LLaMA 3.1. The Chronos script additionally sets `HF_HOME` and `PYTHONPATH` for the local `libs/` directory.
+- **Q4 (LLM scripts):** Start a local Ollama server (`127.0.0.1:11435`) for LLaMA 3.1. The Chronos script additionally sets `HF_HOME` and `PYTHONPATH` for the local `libs/` directory.
