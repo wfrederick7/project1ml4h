@@ -8,7 +8,7 @@
 
 cd /home/$USER/project1ml4h/foundation_models
 
-source /cluster/courses/ml4h/jupyter/bin/activate
+source "$SLURM_SUBMIT_DIR/activate_env.sh"
 
 export PYTHONPATH=/home/$USER/project1ml4h/libs:$PYTHONPATH
 export HF_HOME=/home/$USER/project1ml4h/hf_cache

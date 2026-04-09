@@ -27,6 +27,7 @@ import yaml
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import average_precision_score, roc_auc_score
 from torch.utils.data import DataLoader, Dataset
+from xgboost import XGBClassifier
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from utils import run_metadata, save_json, seed_everything
@@ -401,6 +402,107 @@ def fit_linear_probe(
 
 
 # ---------------------------------------------------------------------------
+# XGBoost on engineered features (Experiment A1, matches Q2.1.2)
+# ---------------------------------------------------------------------------
+N_STATIC = len(_DATA["static_cols"])
+
+
+def engineer_features_from_sequences(X: np.ndarray) -> np.ndarray:
+    """Build per-patient engineered features from (N, T, F) sequences.
+
+    Mirrors supervised_learning/classic_ML_2.engineer_patient_features:
+    static values (constant across time) plus first / last / mean / min /
+    max / std / delta / slope for each dynamic variable. Uses the hourly
+    index 0..T-1 as the time axis for the slope computation.
+    """
+    N, T, F = X.shape
+    times = np.arange(T, dtype=np.float64)
+    t_centered = times - times.mean()
+    denom = float((t_centered ** 2).sum())
+
+    static = X[:, 0, :N_STATIC].astype(np.float64)
+    dyn = X[:, :, N_STATIC:].astype(np.float64)
+
+    first = dyn[:, 0, :]
+    last = dyn[:, -1, :]
+    mean = dyn.mean(axis=1)
+    mn = dyn.min(axis=1)
+    mx = dyn.max(axis=1)
+    std = dyn.std(axis=1, ddof=0)
+    delta = last - first
+
+    if denom > 0:
+        y_centered = dyn - mean[:, None, :]
+        slope = (t_centered[None, :, None] * y_centered).sum(axis=1) / denom
+    else:
+        slope = np.zeros_like(mean)
+
+    feats = np.concatenate(
+        [static, first, last, mean, mn, mx, std, delta, slope], axis=1
+    )
+    feats = np.nan_to_num(feats, nan=0.0, posinf=0.0, neginf=0.0)
+    return feats.astype(np.float32)
+
+
+def fit_xgboost_sweep(
+    X_train: np.ndarray,
+    y_train: np.ndarray,
+    X_val: np.ndarray,
+    y_val: np.ndarray,
+    X_test: np.ndarray,
+    y_test: np.ndarray,
+) -> tuple[dict, list[dict]]:
+    """Exact Q2.1.2 XGBoost hyperparameter sweep, selected by val AuPRC."""
+    n_pos = int((y_train == 1).sum())
+    n_neg = int((y_train == 0).sum())
+    pos_weight = float(n_neg / max(n_pos, 1))
+
+    candidates = [
+        {"n_estimators": 100, "learning_rate": 0.05, "max_depth": 3, "min_child_weight": 1, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": 1.0},
+        {"n_estimators": 200, "learning_rate": 0.05, "max_depth": 4, "min_child_weight": 1, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": 1.0},
+        {"n_estimators": 300, "learning_rate": 0.03, "max_depth": 4, "min_child_weight": 1, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": 1.0},
+        {"n_estimators": 200, "learning_rate": 0.05, "max_depth": 6, "min_child_weight": 3, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": 1.0},
+        {"n_estimators": 100, "learning_rate": 0.05, "max_depth": 3, "min_child_weight": 1, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": pos_weight},
+        {"n_estimators": 200, "learning_rate": 0.05, "max_depth": 4, "min_child_weight": 1, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": pos_weight},
+        {"n_estimators": 300, "learning_rate": 0.03, "max_depth": 4, "min_child_weight": 1, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": pos_weight},
+        {"n_estimators": 200, "learning_rate": 0.05, "max_depth": 6, "min_child_weight": 3, "subsample": 0.8, "colsample_bytree": 0.8, "scale_pos_weight": pos_weight},
+    ]
+
+    best_score = (-np.inf, -np.inf)
+    best: dict | None = None
+    sweep_rows: list[dict] = []
+
+    for cfg in candidates:
+        model = XGBClassifier(
+            objective="binary:logistic",
+            eval_metric="logloss",
+            n_estimators=cfg["n_estimators"],
+            learning_rate=cfg["learning_rate"],
+            max_depth=cfg["max_depth"],
+            min_child_weight=cfg["min_child_weight"],
+            subsample=cfg["subsample"],
+            colsample_bytree=cfg["colsample_bytree"],
+            scale_pos_weight=cfg["scale_pos_weight"],
+            random_state=SEED,
+            n_jobs=-1,
+        )
+        model.fit(X_train, y_train)
+        val_prob = model.predict_proba(X_val)[:, 1]
+        test_prob = model.predict_proba(X_test)[:, 1]
+        val_m = evaluate_probs(y_val, val_prob)
+        test_m = evaluate_probs(y_test, test_prob)
+        sweep_rows.append({"config": cfg, "val": val_m, "test": test_m})
+
+        score = (val_m["auprc"], val_m["auroc"])
+        if score > best_score:
+            best_score = score
+            best = {"config": cfg, "val": val_m, "test": test_m}
+
+    assert best is not None
+    return best, sweep_rows
+
+
+# ---------------------------------------------------------------------------
 # Subset selection
 # ---------------------------------------------------------------------------
 def subset_by_ids(
@@ -487,8 +589,14 @@ def main() -> None:
 
     subsets = build_subsets(train_ids)
 
+    print("Engineering per-patient features for XGBoost ...")
+    X_train_eng = engineer_features_from_sequences(X_train_seq)
+    X_val_eng = engineer_features_from_sequences(X_val_seq)
+    X_test_eng = engineer_features_from_sequences(X_test_seq)
+    print(f"Engineered feature dim: {X_train_eng.shape[1]}")
+
     experiment_a: dict[str, dict[str, dict]] = {
-        "uni_lstm_q2_2": {},
+        "xgboost_q2_1_2": {},
         "bi_lstm_q2_2": {},
         "transformer_q2_3a": {},
     }
@@ -507,60 +615,39 @@ def main() -> None:
         X_sub_seq, y_sub_seq = subset_by_ids(X_train_seq, y_train_seq, train_ids, subset_ids)
 
         # ------------------------------
-        # Experiment A1: UniLSTM
+        # Experiment A1: XGBoost on Q2.1.2 engineered features
         # ------------------------------
-        uni_model = LSTMClassifier(
-            input_dim=len(FEATURE_COLS),
-            hidden_dim=_M["hidden_dim"],
-            num_layers=_M["num_layers"],
-            dropout=_M["dropout"],
-            bidirectional=False,
-            recency_strength=_M["recency_strength"],
-        ).to(DEVICE)
-
-        uni_model, uni_best_val, uni_hist = train_supervised_model(
-            uni_model,
-            X_sub_seq,
-            y_sub_seq,
-            X_val_seq,
-            y_val_seq,
-            lr=SUPERVISED_LR,
-            weight_decay=SUPERVISED_WD,
-            batch_size=SUPERVISED_BATCH_SIZE,
-            max_epochs=SUPERVISED_EPOCHS,
-            patience=SUPERVISED_PATIENCE,
-            seed_offset=1000 + i,
+        X_sub_eng, y_sub_eng = subset_by_ids(
+            X_train_eng, y_train_seq, train_ids, subset_ids
         )
 
-        yv_uni, pv_uni = predict_probs(uni_model, make_loader(X_val_seq, y_val_seq, 256, False, 2000 + i))
-        yt_uni, pt_uni = predict_probs(uni_model, make_loader(X_test_seq, y_test_seq, 256, False, 3000 + i))
-        uni_val = evaluate_probs(yv_uni, pv_uni)
-        uni_test = evaluate_probs(yt_uni, pt_uni)
+        xgb_best, xgb_sweep = fit_xgboost_sweep(
+            X_sub_eng, y_sub_eng,
+            X_val_eng, y_val_seq,
+            X_test_eng, y_test_seq,
+        )
+        xgb_val = xgb_best["val"]
+        xgb_test = xgb_best["test"]
 
-        uni_dir = RESULTS_DIR / "experiment_a_from_scratch" / "uni_lstm_q2_2"
-        uni_dir.mkdir(parents=True, exist_ok=True)
-        uni_ckpt_dir = Q3_2_CKPT_DIR / "uni_lstm_q2_2"
-        uni_ckpt_dir.mkdir(parents=True, exist_ok=True)
-        uni_model_path = uni_ckpt_dir / f"n_{label}_best.pt"
-        torch.save(uni_model.state_dict(), uni_model_path)
+        xgb_dir = RESULTS_DIR / "experiment_a_from_scratch" / "xgboost_q2_1_2"
+        xgb_dir.mkdir(parents=True, exist_ok=True)
         save_json(
-            uni_dir / f"n_{label}_history.json",
+            xgb_dir / f"n_{label}_history.json",
             {
-                "best_validation": uni_best_val,
-                "final_validation": uni_val,
-                "test": uni_test,
-                "history": uni_hist,
+                "best_config": xgb_best["config"],
+                "validation": xgb_val,
+                "test": xgb_test,
+                "sweep": xgb_sweep,
             },
         )
 
-        experiment_a["uni_lstm_q2_2"][label] = {
-            "best_validation": uni_best_val,
-            "final_validation": uni_val,
-            "test": uni_test,
-            "train_size": int(len(y_sub_seq)),
-            "model_path": str(uni_model_path),
+        experiment_a["xgboost_q2_1_2"][label] = {
+            "best_config": xgb_best["config"],
+            "validation": xgb_val,
+            "test": xgb_test,
+            "train_size": int(len(y_sub_eng)),
         }
-        print(f"  UniLSTM       | Test AuROC={uni_test['auroc']:.4f}  AuPRC={uni_test['auprc']:.4f}")
+        print(f"  XGBoost       | Test AuROC={xgb_test['auroc']:.4f}  AuPRC={xgb_test['auprc']:.4f}")
 
         # ------------------------------
         # Experiment A2: BiLSTM
@@ -692,11 +779,11 @@ def main() -> None:
             {
                 "n_labelled": label,
                 "experiment": "A_from_scratch",
-                "model": "uni_lstm_q2_2",
-                "val_auroc": uni_val["auroc"],
-                "val_auprc": uni_val["auprc"],
-                "test_auroc": uni_test["auroc"],
-                "test_auprc": uni_test["auprc"],
+                "model": "xgboost_q2_1_2",
+                "val_auroc": xgb_val["auroc"],
+                "val_auprc": xgb_val["auprc"],
+                "test_auroc": xgb_test["auroc"],
+                "test_auprc": xgb_test["auprc"],
             },
             {
                 "n_labelled": label,
@@ -741,12 +828,11 @@ def main() -> None:
         "table_csv": str(comparison_path),
         "checkpoint_dir": str(Q3_2_CKPT_DIR),
         "model_configs": {
-            "uni_lstm_q2_2": {
-                "hidden_dim": _M["hidden_dim"],
-                "num_layers": _M["num_layers"],
-                "dropout": _M["dropout"],
-                "recency_strength": _M["recency_strength"],
-                "bidirectional": False,
+            "xgboost_q2_1_2": {
+                "feature_type": "engineered_q2_1_2",
+                "n_features": int(X_train_eng.shape[1]),
+                "sweep_size": 8,
+                "selection": "best val AuPRC, tie-break AuROC",
             },
             "bi_lstm_q2_2": {
                 "hidden_dim": _M["hidden_dim"],

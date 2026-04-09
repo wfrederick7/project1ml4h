@@ -10,7 +10,7 @@ set -euo pipefail
 
 cd /home/$USER/project1ml4h
 
-source /cluster/courses/ml4h/jupyter/bin/activate
+source "$SLURM_SUBMIT_DIR/activate_env.sh"
 
 python rep_learning/pretrain_nce.py
 
@@ -19,3 +19,5 @@ python rep_learning/linear_probe.py
 python rep_learning/label_scarce_predict.py
 
 python rep_learning/visualize_rep.py
+
+python rep_learning/plot_appendix_figures.py

@@ -8,6 +8,6 @@
 
 cd /home/$USER/project1ml4h/data_prep
 
-source /cluster/courses/ml4h/jupyter/bin/activate
+source "$SLURM_SUBMIT_DIR/activate_env.sh"
 
 python preprocessing.py
