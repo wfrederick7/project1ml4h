@@ -22,7 +22,9 @@ echo "=== Representation Learning ==="
 sbatch --wait rep_learning/rep_learn.sh
 
 echo "=== Foundation Models ==="
-sbatch --wait foundation_models/predict_evaluate.sh
+sbatch --wait foundation_models/predict_evaluate_zero.sh
+sbatch --wait foundation_models/predict_evaluate_few.sh
+sbatch --wait foundation_models/predict_evaluate_emb.sh
 sbatch --wait foundation_models/plotting.sh
 sbatch --wait foundation_models/chronos_pipeline.sh
 

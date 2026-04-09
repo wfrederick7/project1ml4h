@@ -1,119 +1,164 @@
-from pathlib import Path
-import sys
-
-import matplotlib
 import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 from sklearn.manifold import TSNE
+from sklearn.metrics import (
+    adjusted_rand_score,
+    normalized_mutual_info_score,
+    silhouette_score,
+)
+import argparse
+import random
+import os
 
-matplotlib.use("Agg")
-from matplotlib import pyplot as plt
-
-PROJECT_LIBS = Path.home() / "project1ml4h" / "libs"
-if PROJECT_LIBS.exists():
-    sys.path.insert(0, str(PROJECT_LIBS))
-
-try:
-    from umap import UMAP
-except Exception:
-    UMAP = None
-
-BASE_DIR = Path(__file__).resolve().parent
-TEST_EMBEDDINGS_PATH = BASE_DIR / "test_embeddings.npy"
-TEST_LABELS_PATH = BASE_DIR / "test_labels.npy"
-CLUSTER_LABELS_PATH = BASE_DIR / "cluster_labels.npy"
+# -----------------------------
+# Config
+# -----------------------------
+SEED = 42
+EMB_DIR = "."  # same folder as your files
 
 
-def load_required_array(path: Path) -> np.ndarray:
-    if not path.exists():
-        raise FileNotFoundError(f"Missing required file: {path}")
-    return np.load(path)
+def seed_everything(seed):
+    random.seed(seed)
+    np.random.seed(seed)
+    os.environ["PYTHONHASHSEED"] = str(seed)
 
 
-def plot_embeddings(reduced: np.ndarray, cluster_labels: np.ndarray, true_labels: np.ndarray, method: str, output_path: Path) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
-    fig.suptitle(f"{method} Embeddings", fontsize=14)
-
-    scatter1 = axes[0].scatter(
-        reduced[:, 0],
-        reduced[:, 1],
-        c=cluster_labels,
-        cmap="tab10",
-        alpha=0.6,
-        s=10,
-    )
-    axes[0].set_title("Colored by K-Means Cluster")
-    axes[0].set_xlabel(f"{method} 1")
-    axes[0].set_ylabel(f"{method} 2")
-    plt.colorbar(scatter1, ax=axes[0], label="Cluster")
-
-    scatter2 = axes[1].scatter(
-        reduced[:, 0],
-        reduced[:, 1],
-        c=true_labels,
-        cmap="RdYlGn_r",
-        alpha=0.6,
-        s=10,
-    )
-    axes[1].set_title("Colored by Mortality Label")
-    axes[1].set_xlabel(f"{method} 1")
-    axes[1].set_ylabel(f"{method} 2")
-    cbar = plt.colorbar(scatter2, ax=axes[1], label="Label")
-    cbar.set_ticks([0, 1])
-    cbar.set_ticklabels(["Alive", "Dead"])
-
-    fig.tight_layout()
-    fig.savefig(output_path, dpi=150, bbox_inches="tight")
-    plt.close(fig)
+seed_everything(SEED)
 
 
-def main() -> None:
-    test_embeddings = load_required_array(TEST_EMBEDDINGS_PATH)
-    test_labels = load_required_array(TEST_LABELS_PATH)
-    cluster_labels = load_required_array(CLUSTER_LABELS_PATH)
+# -----------------------------
+# Load data
+# -----------------------------
+def load_data():
+    X_train = np.load("chronos_train_embeddings.npy")
+    y_train = np.load("chronos_train_labels.npy")
 
-    if test_embeddings.ndim != 2:
-        raise ValueError(f"Expected 2D embeddings, got shape {test_embeddings.shape}")
+    X_test = np.load("chronos_test_embeddings.npy")
+    y_test = np.load("chronos_test_labels.npy")
 
-    if not (len(test_embeddings) == len(test_labels) == len(cluster_labels)):
-        raise ValueError(
-            "Input length mismatch: "
-            f"embeddings={len(test_embeddings)}, labels={len(test_labels)}, clusters={len(cluster_labels)}"
+    X = np.concatenate([X_train, X_test], axis=0)
+    y = np.concatenate([y_train, y_test], axis=0)
+
+    return X, y.astype(int)
+
+
+# -----------------------------
+# Aggregate embeddings to 2D
+# -----------------------------
+def aggregate_embeddings(X, method="mean"):
+    """
+    Convert embeddings to shape [n_samples, n_features].
+
+    If X is already 2D, return as-is.
+    If X is 3D, aggregate over axis 1.
+    """
+    X = np.asarray(X)
+
+    if X.ndim == 2:
+        return X
+
+    if X.ndim == 3:
+        if method == "mean":
+            return X.mean(axis=1)
+        elif method == "max":
+            return X.max(axis=1)
+        elif method == "flatten":
+            return X.reshape(X.shape[0], -1)
+        else:
+            raise ValueError(f"Unknown aggregation method: {method}")
+
+    raise ValueError(f"Expected X to have 2 or 3 dimensions, got shape {X.shape}")
+
+
+# -----------------------------
+# Metrics
+# -----------------------------
+def compute_metrics(X, y):
+    km = KMeans(n_clusters=2, random_state=SEED, n_init=10)
+    km_labels = km.fit_predict(X)
+
+    return {
+        "silhouette_gt": float(silhouette_score(X, y)),
+        "silhouette_kmeans": float(silhouette_score(X, km_labels)),
+        "ari": float(adjusted_rand_score(y, km_labels)),
+        "nmi": float(normalized_mutual_info_score(y, km_labels)),
+    }
+
+
+# -----------------------------
+# Plot
+# -----------------------------
+def plot_tsne(X, y, out_name="t_sne_embeddings_LLM.png"):
+    print("Running t-SNE...")
+    coords = TSNE(n_components=2, perplexity=30, random_state=SEED).fit_transform(X)
+
+    fig, ax = plt.subplots(figsize=(7, 6))
+
+    colors = {0: "#3b82f6", 1: "#ef4444"}
+    names = {0: "Alive", 1: "Dead"}
+
+    for c in [0, 1]:
+        mask = y == c
+        ax.scatter(
+            coords[mask, 0],
+            coords[mask, 1],
+            c=colors[c],
+            label=names[c],
+            s=8,
+            alpha=0.5,
+            edgecolors="none",
         )
 
-    print(f"Embeddings shape: {test_embeddings.shape}", flush=True)
-    print(f"Labels shape:     {test_labels.shape}", flush=True)
-    print(f"Cluster labels:   {cluster_labels.shape}", flush=True)
+    ax.set_title("t-SNE Embeddings — Mortality Label")
+    ax.legend(markerscale=3)
+    ax.set_xticks([])
+    ax.set_yticks([])
 
-    perplexity = min(30, max(5, len(test_embeddings) - 1))
-    print(f"Running t-SNE with perplexity={perplexity}...", flush=True)
-    tsne = TSNE(n_components=2, random_state=42, perplexity=perplexity, max_iter=1000)
-    tsne_reduced = tsne.fit_transform(test_embeddings)
-    print(f"t-SNE output shape: {tsne_reduced.shape}", flush=True)
-    plot_embeddings(
-        tsne_reduced,
-        cluster_labels,
-        test_labels,
-        method="t-SNE",
-        output_path=BASE_DIR / "t_sne_embeddings.png",
-    )
+    plt.tight_layout()
+    plt.savefig(out_name, dpi=200, bbox_inches="tight")
+    plt.show()
 
-    if UMAP is None:
-        print("UMAP is not available in this environment. Skipping UMAP plot.", flush=True)
-    else:
-        print("Running UMAP...", flush=True)
-        reducer = UMAP(n_components=2, random_state=42)
-        umap_reduced = reducer.fit_transform(test_embeddings)
-        print(f"UMAP output shape: {umap_reduced.shape}", flush=True)
-        plot_embeddings(
-            umap_reduced,
-            cluster_labels,
-            test_labels,
-            method="UMAP",
-            output_path=BASE_DIR / "umap_embeddings.png",
-        )
 
-    print("Plot generation completed.", flush=True)
+# -----------------------------
+# Main
+# -----------------------------
+def main(score_only=False, aggregation="mean"):
+    X_raw, y = load_data()
+
+    print(f"\nRaw X shape: {X_raw.shape}")
+    print(f"y shape: {y.shape}")
+
+    X = aggregate_embeddings(X_raw, method=aggregation)
+
+    print(f"Aggregated X shape: {X.shape}")
+    print(f"Loaded {len(y)} patients")
+    print(f"Dead: {int(y.sum())}, Alive: {int(len(y)-y.sum())}")
+
+    metrics = compute_metrics(X, y)
+
+    print("\n=== Metrics ===")
+    print(f"Aggregation                = {aggregation}")
+    print(f"Silhouette (GT labels)     = {metrics['silhouette_gt']:.4f}")
+    print(f"Silhouette (KMeans labels) = {metrics['silhouette_kmeans']:.4f}")
+    print(f"ARI (KMeans vs GT)         = {metrics['ari']:.4f}")
+    print(f"NMI (KMeans vs GT)         = {metrics['nmi']:.4f}")
+
+    if score_only:
+        return
+
+    plot_tsne(X, y)
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--score-only", action="store_true")
+    parser.add_argument(
+        "--aggregation",
+        choices=["mean", "max", "flatten"],
+        default="mean",
+        help="How to convert 3D embeddings to 2D patient-level vectors.",
+    )
+    args = parser.parse_args()
+
+    main(score_only=args.score_only, aggregation=args.aggregation)
