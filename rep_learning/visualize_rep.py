@@ -149,16 +149,9 @@ def compute_clustering_metrics(X, y_true):
 def main():
     print("Loading precomputed embeddings ...")
 
-    embs, lbls = [], []
-    for name, key in [("Train", "emb_train"), ("Val", "emb_val"), ("Test", "emb_test")]:
-        X, y = load_embeddings(key)
-        X, y = filter_labelled(X, y)
-        embs.append(X)
-        lbls.append(y)
-        print(f"  {name}: {len(y)} labelled patients")
-
-    X_all = np.concatenate(embs)
-    y_all = np.concatenate(lbls)
+    X_all, y_all = load_embeddings("emb_test")
+    X_all, y_all = filter_labelled(X_all, y_all)
+    print(f"  Test: {len(y_all)} labelled patients")
     print(f"\nTotal labelled: {len(y_all)}  (died={y_all.sum():.0f}, "
           f"survived={len(y_all) - y_all.sum():.0f})")
 
@@ -194,13 +187,13 @@ def main():
     ).fit_transform(X_all)
     metrics_tsne = compute_clustering_metrics(tsne_coords, y_all)
 
-    print("Running UMAP (n_neighbors=15) ...")
+    print("Running UMAP (n_neighbors=30, cosine) ...")
     umap_coords = umap.UMAP(
         n_components=2,
         random_state=SEED,
-        n_neighbors=15,
+        n_neighbors=30,
         min_dist=0.1,
-        metric="euclidean",
+        metric="cosine",
     ).fit_transform(X_all)
     metrics_umap = compute_clustering_metrics(umap_coords, y_all)
 
@@ -214,7 +207,7 @@ def main():
     )
     scatter_2d(
         umap_coords, y_all,
-        f"UMAP (nn=15)\nSil={metrics_umap['silhouette']:.3f}  DB={metrics_umap['davies_bouldin']:.3f}",
+        f"UMAP (nn=30, cosine)\nSil={metrics_umap['silhouette']:.3f}  DB={metrics_umap['davies_bouldin']:.3f}",
         axes[1],
     )
 
