@@ -33,8 +33,8 @@ sbatch rep_learning/rep_learn.sh
 sbatch foundation_models/predict_evaluate_zero.sh
 sbatch foundation_models/predict_evaluate_few.sh
 sbatch foundation_models/predict_evaluate_emb.sh
-sbatch foundation_models/chronos_pipeline.sh
 sbatch foundation_models/plotting.sh
+sbatch foundation_models/chronos_pipeline.sh
 ```
 
 Stages must run in order (Q1 before Q2, etc.). Within each stage, scripts should also run sequentially.
