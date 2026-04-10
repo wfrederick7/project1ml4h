@@ -36,7 +36,7 @@ echo "=== Foundation Models ==="
 sbatch --wait foundation_models/predict_evaluate_zero.sh
 sbatch --wait foundation_models/predict_evaluate_few.sh
 sbatch --wait foundation_models/predict_evaluate_emb.sh
-sbatch --wait foundation_models/chronos_pipeline.sh
 sbatch --wait foundation_models/plotting.sh
+sbatch --wait foundation_models/chronos_pipeline.sh
 
 echo "All stages completed."

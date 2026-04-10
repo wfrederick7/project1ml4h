@@ -31,44 +31,13 @@ seed_everything(SEED)
 # Load data
 # -----------------------------
 def load_data():
-    X_train = np.load("chronos_train_embeddings.npy")
-    y_train = np.load("chronos_train_labels.npy")
+    X_test = np.load("test_embeddings.npy")
+    y_test = np.load("test_labels.npy")
 
-    X_test = np.load("chronos_test_embeddings.npy")
-    y_test = np.load("chronos_test_labels.npy")
+    print(f"Embeddings shape: {X_test.shape}")
+    print(f"Labels shape:     {y_test.shape}")
+    return X_test, y_test.astype(int)
 
-    X = np.concatenate([X_train, X_test], axis=0)
-    y = np.concatenate([y_train, y_test], axis=0)
-
-    return X, y.astype(int)
-
-
-# -----------------------------
-# Aggregate embeddings to 2D
-# -----------------------------
-def aggregate_embeddings(X, method="mean"):
-    """
-    Convert embeddings to shape [n_samples, n_features].
-
-    If X is already 2D, return as-is.
-    If X is 3D, aggregate over axis 1.
-    """
-    X = np.asarray(X)
-
-    if X.ndim == 2:
-        return X
-
-    if X.ndim == 3:
-        if method == "mean":
-            return X.mean(axis=1)
-        elif method == "max":
-            return X.max(axis=1)
-        elif method == "flatten":
-            return X.reshape(X.shape[0], -1)
-        else:
-            raise ValueError(f"Unknown aggregation method: {method}")
-
-    raise ValueError(f"Expected X to have 2 or 3 dimensions, got shape {X.shape}")
 
 
 # -----------------------------
@@ -91,8 +60,7 @@ def compute_metrics(X, y):
 # -----------------------------
 def plot_tsne(X, y, out_name="t_sne_embeddings_LLM.png"):
     print("Running t-SNE...")
-    coords = TSNE(n_components=2, perplexity=30, random_state=SEED).fit_transform(X)
-
+    coords = TSNE(n_components=2, perplexity=30, random_state=SEED, init="pca",learning_rate="auto", metric="euclidean").fit_transform(X)
     fig, ax = plt.subplots(figsize=(7, 6))
 
     colors = {0: "#3b82f6", 1: "#ef4444"}
@@ -123,42 +91,23 @@ def plot_tsne(X, y, out_name="t_sne_embeddings_LLM.png"):
 # -----------------------------
 # Main
 # -----------------------------
-def main(score_only=False, aggregation="mean"):
-    X_raw, y = load_data()
+def main():
+    X_test, y_test = load_data()
 
-    print(f"\nRaw X shape: {X_raw.shape}")
-    print(f"y shape: {y.shape}")
+    print(f"X shape: {X_test.shape}")
+    print(f"y shape: {y_test.shape}")
 
-    X = aggregate_embeddings(X_raw, method=aggregation)
 
-    print(f"Aggregated X shape: {X.shape}")
-    print(f"Loaded {len(y)} patients")
-    print(f"Dead: {int(y.sum())}, Alive: {int(len(y)-y.sum())}")
-
-    metrics = compute_metrics(X, y)
+    metrics = compute_metrics(X_test, y_test)
 
     print("\n=== Metrics ===")
-    print(f"Aggregation                = {aggregation}")
     print(f"Silhouette (GT labels)     = {metrics['silhouette_gt']:.4f}")
     print(f"Silhouette (KMeans labels) = {metrics['silhouette_kmeans']:.4f}")
     print(f"ARI (KMeans vs GT)         = {metrics['ari']:.4f}")
     print(f"NMI (KMeans vs GT)         = {metrics['nmi']:.4f}")
 
-    if score_only:
-        return
-
-    plot_tsne(X, y)
+    plot_tsne(X_test, y_test)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--score-only", action="store_true")
-    parser.add_argument(
-        "--aggregation",
-        choices=["mean", "max", "flatten"],
-        default="mean",
-        help="How to convert 3D embeddings to 2D patient-level vectors.",
-    )
-    args = parser.parse_args()
-
-    main(score_only=args.score_only, aggregation=args.aggregation)
+    main()
